@@ -7,6 +7,7 @@ const Dashboard = () => {
     <div>
       <SurveyList />
       <div className="fixed-action-btn">
+        <p>Add Campaign</p>
         <Link to="/surveys/new" className="btn-floating btn-large red">
           <i className="material-icons">add</i>
         </Link>
