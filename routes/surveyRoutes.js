@@ -72,7 +72,7 @@ module.exports = app => {
     const mailer = new Mailer(survey, crowdFundTemplate(survey));
 
     try {
-      await mailer.send();
+      await mailer.sendMultiple();
       await survey.save();
       req.user.credits -= 1;
       const user = await req.user.save();
