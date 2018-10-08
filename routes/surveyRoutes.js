@@ -61,16 +61,24 @@ module.exports = app => {
       title,
       subject,
       body,
-      // recipients: recipients.split(',').map(email => ({ email: email.trim() })),
-      recipients: recipients.split(','),
+      recipients: recipients.split(',').map(email => ({ email: email.trim() })),
       _user: req.user.id,
       dateSent: Date.now()
     });
 
+    const survey2 = new Survey({
+      title,
+      subject,
+      body,
+      recipients: recipients.split(','),
+      _user: req.user.id,
+      dateSent: Date.now()
+    });    
+
     console.log(survey);
 
     // Great place to send an email!
-    const mailer = new Mailer(survey, crowdFundTemplate(survey));
+    const mailer = new Mailer(survey2, crowdFundTemplate(survey2));
 
     try {
       await mailer.send();
