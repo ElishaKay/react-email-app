@@ -70,7 +70,7 @@ module.exports = app => {
       title,
       subject,
       body,
-      recipients: recipients.split(','),
+      recipients: recipients.split(',').map(email => (email.trim())),
       _user: req.user.id,
       dateSent: Date.now()
     });    
