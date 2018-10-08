@@ -5,7 +5,7 @@ const keys = require('../config/keys');
 class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
     super();
-
+    this.isMultiple=true;
     this.sgApi = sendgrid(keys.sendGridKey);
     this.from_email = new helper.Email('JaneWithers@gmail.com', "Jane Withers");
     this.subject = subject;
