@@ -69,17 +69,26 @@ module.exports = app => {
     console.log(survey);
 
     // Great place to send an email!
-    const mailer = new Mailer(survey, crowdFundTemplate(survey));
 
-    try {
-      await mailer.send();
-      await survey.save();
-      req.user.credits -= 1;
-      const user = await req.user.save();
+    console.log('survey.recipients: ',survey.recipients);
 
-      res.send(user);
-    } catch (err) {
-      res.status(422).send(err);
+    for (let i=0; i<survey.recipients.length; i++) {
+
+      const mailer = new Mailer(survey, crowdFundTemplate(survey), i);
+
+      try {
+        await mailer.send();
+        await survey.save();
+        req.user.credits -= 1;
+        const user = await req.user.save();
+
+        res.send(user);
+      } catch (err) {
+        res.status(422).send(err);
+      }
     }
+
+
+   
   });
 };
