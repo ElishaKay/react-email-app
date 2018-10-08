@@ -24,11 +24,13 @@
     "express": "^4.15.3",
     "localtunnel": "^1.8.3",
     "lodash": "^4.17.4",
+    "merge-descriptors": "^1.0.1",
     "mongoose": "^4.11.1",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-google-oauth20": "^1.0.0",
     "path-parser": "^2.0.2",
+    "safer-buffer": "^2.1.2",
     "sendgrid": "^5.1.2",
     "stripe": "^4.23.1"
   }
