@@ -73,9 +73,8 @@ module.exports = app => {
     console.log('survey.recipients: ',survey.recipients);
 
     for (let i=0; i<survey.recipients.length; i++) {
-      survey.recipients=survey.recipients[i];
 
-      const mailer = new Mailer(survey, crowdFundTemplate(survey));
+      const mailer = new Mailer(survey, crowdFundTemplate(survey), i);
 
       try {
         await mailer.send();
@@ -88,5 +87,8 @@ module.exports = app => {
         res.status(422).send(err);
       }
     }
+
+
+   
   });
 };
