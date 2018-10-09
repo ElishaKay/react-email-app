@@ -1,0 +1,97 @@
+const keys = require('../../config/keys');
+
+module.exports = survey => {
+  return `
+    <html>
+      <body>
+
+        <center>
+
+        <table class="m_-4256334153151547019m_-8696919415517488957template-table" border="0" cellpadding="0" cellspacing="0" width="650" bgcolor="#d6d6d6" style="font-size:13px;min-width:auto;max-width:650px"><tbody><tr><td id="m_-4256334153151547019m_-8696919415517488957layout_table_e90001e04e99c624c4647368b3f87a877f329e6b" valign="top" align="center" width="650" style="background-color:#ffffff"><table cellpadding="0" cellspacing="0" border="0" class="m_-4256334153151547019m_-8696919415517488957layout m_-4256334153151547019m_-8696919415517488957layout-table m_-4256334153151547019m_-8696919415517488957root-table" width="650" style="font-size:13px;min-width:100%;background-color:#ffffff"><tbody><tr style="background-color:#ffffff"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-margin831" valign="top" style="background-color:#ffffff"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%"><tbody><tr id="m_-4256334153151547019m_-8696919415517488957layout-row831" class="m_-4256334153151547019m_-8696919415517488957layout m_-4256334153151547019m_-8696919415517488957layout-row m_-4256334153151547019m_-8696919415517488957widget m_-4256334153151547019m_-8696919415517488957_widget_picture" align="left"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-padding831" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%"><tbody><tr><td class="m_-4256334153151547019m_-8696919415517488957image-td" align="left" valign="top" width="650"><a href="http://silkncure.acemlnc.com/lt.php?notrack=1&amp;s=cbfc8d9a9a09b07c2c5410626a8a504d&amp;i=139A280A0A627" style="margin:0;outline:none;padding:0;color:#045fb4;display:block;min-width:100%" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://silkncure.acemlnc.com/lt.php?notrack%3D1%26s%3Dcbfc8d9a9a09b07c2c5410626a8a504d%26i%3D139A280A0A627&amp;source=gmail&amp;ust=1539154087944000&amp;usg=AFQjCNEz6DF-KEsQ5YwoHONV0PaOx2tO6A"><img src="https://ci5.googleusercontent.com/proxy/s1w5Gul40GXN9H22GCltvNFPEqdtJlHrFQ18Hru_o7-FBH17rB9tEFiatP506GPsyI5hMmo4MOxvJ8OxpzkXuHtsSeOPaea_tX5toesH69F3Tk_kWWOK6pL-l1yuktx4nPIieFmF71naU_Ta=s0-d-e1-ft#http://silkncure.imgus11.com/public//416915c9a494b65824750845081132ed.png?r=1730592999" alt="" width="650" style="border:none;display:block;outline:none;width:650px;opacity:1;max-width:100%" class="CToWUd"></a></td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        <tr style="background-color:#ffffff"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-margin825" valign="top" style="padding:0px 0 0 0;background-color:#ffffff"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%;border-collapse:initial!important"><tbody><tr id="m_-4256334153151547019m_-8696919415517488957layout-row825" class="m_-4256334153151547019m_-8696919415517488957layout m_-4256334153151547019m_-8696919415517488957layout-row m_-4256334153151547019m_-8696919415517488957widget m_-4256334153151547019m_-8696919415517488957_widget_text m_-4256334153151547019m_-8696919415517488957style825" style="margin:0;padding:0;background-color:#ffffff"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-padding825" valign="top" style="background-color:#ffffff;padding:50px"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%"><tbody><tr><td id="m_-4256334153151547019m_-8696919415517488957text_div798" class="m_-4256334153151547019m_-8696919415517488957td_text m_-4256334153151547019m_-8696919415517488957td_block" valign="top" align="left" style="line-height:150%;color:inherit;font-size:12px;font-weight:inherit;line-height:1.5;text-decoration:inherit;font-family:Arial"> <div style="line-height:150%;margin:0;outline:none;padding:0;line-height:1.5"><div class="m_-4256334153151547019m_-8696919415517488957droparea" style="margin:0;outline:none;padding:0"></div>
+         <div style="margin:0;outline:none;padding:0"> <div style="margin:0;outline:none;padding:0"><div class="m_-4256334153151547019m_-8696919415517488957droparea" style="margin:0;outline:none;padding:0"></div>
+         <div style="margin:0;outline:none;padding:0"> <div style="margin:0;outline:none;padding:0"> <div style="margin:0;outline:none;padding:0;color:#084b8a;font-size:18px"> <div style="margin:0;outline:none;padding:0;color:#084b8a"> <span style="color:#084b8a;font-size:16px;font-weight:inherit;line-height:inherit;text-decoration:inherit"> </span><p style="margin:0;outline:none;padding:0;color:#084b8a;font-size:inherit;font-weight:inherit;line-height:inherit;text-decoration:inherit;text-align:left"></p>
+        </div>
+         </div>
+         <div style="margin:0;outline:none;padding:0;color:#084b8a;text-align:center;font-size:18px"><div style="margin:0;outline:none;padding:0;color:#084b8a;font-family:arial;text-align:left"><b style="margin:0;outline:none;padding:0"><div dir="ltr" style="margin:0;outline:none;padding:0"><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">Hi,</span><br><br><b style="margin:0;outline:none;padding:0;font-family:arial;color:#084b8a;font-size:20px"><div dir="ltr" style="margin:0;outline:none;padding:0;text-align:center;font-family:arial;color:#084b8a"><a href="http://silkncure.acemlnc.com/lt.php?notrack=1&amp;s=cbfc8d9a9a09b07c2c5410626a8a504d&amp;i=139A280A0A627" style="margin:0;outline:none;padding:0;color:#045fb4;text-decoration:underline;font-family:arial;font-style:italic" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://silkncure.acemlnc.com/lt.php?notrack%3D1%26s%3Dcbfc8d9a9a09b07c2c5410626a8a504d%26i%3D139A280A0A627&amp;source=gmail&amp;ust=1539154087944000&amp;usg=AFQjCNEz6DF-KEsQ5YwoHONV0PaOx2tO6A"><span>LAUNCH SALE for Silk’n Stop</span></a></div>
+        </b> <br><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">We are offering you first, our past Silk'n clients, the chance to purchase our new:</span><br><br><div style="margin:0;outline:none;padding:0;text-align:center;font-size:20px"><span style="color:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;text-decoration:inherit;font-family:arial"><a href="http://silkncure.acemlnc.com/lt.php?notrack=1&amp;s=cbfc8d9a9a09b07c2c5410626a8a504d&amp;i=139A280A0A627" style="margin:0;outline:none;padding:0;color:#045fb4;text-decoration:underline" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://silkncure.acemlnc.com/lt.php?notrack%3D1%26s%3Dcbfc8d9a9a09b07c2c5410626a8a504d%26i%3D139A280A0A627&amp;source=gmail&amp;ust=1539154087945000&amp;usg=AFQjCNFH8tkVcf2DUubnhwBGmZgYJQMhKg"><span> <span style="color:#045fb4;font-size:inherit;font-weight:inherit;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">Silk'n Stop - For a Pain-Free Period</span></span></a> </span> </div>
+        <br><a href="http://silkncure.acemlnc.com/lt.php?notrack=1&amp;s=cbfc8d9a9a09b07c2c5410626a8a504d&amp;i=139A280A0A627" style="margin:0;outline:none;padding:0;color:#045fb4;text-decoration:underline;font-weight:normal" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://silkncure.acemlnc.com/lt.php?notrack%3D1%26s%3Dcbfc8d9a9a09b07c2c5410626a8a504d%26i%3D139A280A0A627&amp;source=gmail&amp;ust=1539154087945000&amp;usg=AFQjCNFH8tkVcf2DUubnhwBGmZgYJQMhKg"><span style="color:inherit;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">Click here</span></a><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal"> to get your LAUNCH SALE for Silk’n Stop.</span><br><br><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">This LAUNCH SALE offer is for 72 hours only. </span><br><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">Delivery by Christmas guaranteed. </span><br><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">DON'T MISS OUT!! (Limited to the first 29 units)</span><br><br><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">Silk’n Stop works With Your Body to Naturally Relieve Menstrual Pain – </span><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:italic">No pills, no chemicals, no side effects</span><br><br><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">Enjoy your Silk'n Stop. The pain-free-period starts today :)</span><br><br><span style="color:#084b8a;font-size:18px;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">Jane from Silk'n</span></div>
+        </b></div>
+        </div>
+        </div>
+        <div style="margin:0;outline:none;padding:0"><div style="margin:0;outline:none;padding:0"><div style="margin:0;outline:none;padding:0;font-size:10px"><p style="margin:0;outline:none;padding:0;color:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;text-decoration:inherit"></p>
+         </div>
+         </div>
+         </div>
+         </div>
+         </div>
+         </div>
+         </div>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        <tr style="background-color:#ffffff"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-margin828" valign="top" style="background-color:#ffffff"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%"><tbody><tr id="m_-4256334153151547019m_-8696919415517488957layout-row828" class="m_-4256334153151547019m_-8696919415517488957layout m_-4256334153151547019m_-8696919415517488957layout-row m_-4256334153151547019m_-8696919415517488957widget m_-4256334153151547019m_-8696919415517488957_widget_picture" align="center"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-padding828" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%"><tbody><tr><td class="m_-4256334153151547019m_-8696919415517488957image-td" align="center" valign="top" width="650"><img src="https://ci3.googleusercontent.com/proxy/6MzHbOcpEp2qrCmFuA8c20ht6z4v2vr4919bIgZJD8Kg8vuG594RCmyrhr1xioYAwHa-R4OvEjqLKaKIGf9b33tqbgHK4w1i2mAGxdBVtuHkfylPPm6oXHsUqSmHrCK_VDreVzRlvNBrodI=s0-d-e1-ft#http://silkncure.imgus11.com/public//daf5096c75c7f97c61a437e5bce56196.png?r=183038694" alt="" width="104" style="display:block;border:none;outline:none;width:104px;opacity:1;max-width:100%" class="CToWUd"></td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        <tr style="background-color:#ffffff"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-margin827" valign="top" style="padding:0 50px 0 50px;background-color:#ffffff"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%;border-collapse:initial!important"><tbody><tr id="m_-4256334153151547019m_-8696919415517488957layout-row827" class="m_-4256334153151547019m_-8696919415517488957layout m_-4256334153151547019m_-8696919415517488957layout-row m_-4256334153151547019m_-8696919415517488957widget m_-4256334153151547019m_-8696919415517488957_widget_break m_-4256334153151547019m_-8696919415517488957style827"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-padding827" valign="top" style="line-height:0;padding:0"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%;border-collapse:collapse;line-height:0"><tbody><tr><td height="5" style="line-height:0"></td>
+        </tr>
+        <tr><td align="center" height="1" width="550" style="line-height:0"> <table align="center" border="0" cellpadding="0" cellspacing="0" height="1" width="550" style="font-size:13px;min-width:auto!important;border-collapse:collapse;line-height:0;width:100%;max-width:100%"><tbody><tr><td class="m_-4256334153151547019m_-8696919415517488957break-line" bgcolor="#d2d4db" height="1" width="550" style="line-height:1px;height:1px;width:550px;background-color:#d2d4db"> </td>
+         </tr>
+        </tbody></table>
+        </td>
+         </tr>
+        <tr><td height="5" style="line-height:0"></td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        <tr style="background-color:#ffffff"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-margin826" valign="top" style="padding:0;background-color:#ffffff"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%;border-collapse:initial!important"><tbody><tr id="m_-4256334153151547019m_-8696919415517488957layout-row826" class="m_-4256334153151547019m_-8696919415517488957layout m_-4256334153151547019m_-8696919415517488957layout-row m_-4256334153151547019m_-8696919415517488957widget m_-4256334153151547019m_-8696919415517488957_widget_text m_-4256334153151547019m_-8696919415517488957style826" style="margin:0;padding:0;background-color:#ffffff"><td id="m_-4256334153151547019m_-8696919415517488957layout-row-padding826" valign="top" style="background-color:#ffffff;padding:30px 0 30px 0"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:13px;min-width:100%"><tbody><tr><td id="m_-4256334153151547019m_-8696919415517488957text_div799" class="m_-4256334153151547019m_-8696919415517488957td_text m_-4256334153151547019m_-8696919415517488957td_block" valign="top" align="left" style="color:inherit;font-size:12px;font-weight:inherit;line-height:1;text-decoration:inherit;font-family:Arial"> <div style="margin:0;outline:none;padding:0;font-size:12px;color:#8904b1"> <span style="color:#8904b1;font-size:12px;font-weight:inherit;line-height:inherit;text-decoration:inherit"> </span><div style="margin:0;outline:none;padding:0;text-align:center"><div style="margin:0;outline:none;padding:0;text-align:center"></div>
+        </div>
+         <div style="margin:0;outline:none;padding:0;font-family:arial;color:#084b8a;font-size:12px;font-style:normal;font-weight:400;text-align:center"><div style="margin:0;outline:none;padding:0;font-family:arial;text-align:center;color:#084b8a"><a href="http://silkncure.acemlnc.com/proc.php?nl=0&amp;c=139&amp;m=280&amp;s=cbfc8d9a9a09b07c2c5410626a8a504d&amp;act=unsub" style="margin:0;outline:none;padding:0;color:#045fb4;text-decoration:underline;font-family:arial" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://silkncure.acemlnc.com/proc.php?nl%3D0%26c%3D139%26m%3D280%26s%3Dcbfc8d9a9a09b07c2c5410626a8a504d%26act%3Dunsub&amp;source=gmail&amp;ust=1539154087945000&amp;usg=AFQjCNHGoIPuPaRWqsoHwlso3nKRGBmURQ"><span style="color:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;text-decoration:inherit;font-family:arial">Click here to unsubscribe</span></a><br><br></div>
+        <br style="font-family:arial;font-weight:inherit;color:#084b8a;font-size:12px;font-family:arial;font-size:12px;color:#084b8a;color:#084b8a"></div>
+        <div style="margin:0;outline:none;padding:0;font-family:arial;color:#084b8a;font-size:12px;font-style:normal;font-weight:400;text-align:center"><span style="color:#084b8a;font-size:12px;font-weight:inherit;line-height:inherit;text-decoration:inherit;font-family:arial"><b style="margin:0;outline:none;padding:0;font-family:arial;color:#084b8a;font-style:normal;font-weight:normal"><span style="color:#084b8a;font-size:inherit;font-weight:400;line-height:inherit;text-decoration:inherit;font-family:arial;font-style:normal">Silk'n Therapy, POB 533 , 20692 Yokneam , Israel</span></b> </span></div>
+         <div style="margin:0;outline:none;padding:0;text-align:center;font-size:12px"><br></div>
+         </div>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        </tbody></table>
+        </td>
+        </tr>
+        </tbody></table>
+
+
+        </center>
+
+  </body>
+</html>
+  `;
+};
