@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
-const crowdFundTemplate2 = require('../services/emailTemplates/crowdFundTemplate2');
+const crowdFundTemplate3 = require('../services/emailTemplates/crowdFundTemplate3');
 
 const Survey = mongoose.model('surveys');
 
@@ -74,7 +74,7 @@ module.exports = app => {
 
     for (let i=0; i<survey.recipients.length; i++) {
 
-      const mailer = new Mailer(survey, crowdFundTemplate2(survey), i);
+      const mailer = new Mailer(survey, crowdFundTemplate3(survey), i);
 
       try {
         await mailer.send();
