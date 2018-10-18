@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { fetchLIConnections } from '../../actions';
 
 class ConnectionList extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchLIConnections();
   }
 
   renderConnections() {
-    return this.props.surveys.reverse().map(survey => {
+    return this.props.conns.reverse().map(survey => {
       return (
         <div className="card darken-1" key={survey._id}>
           <div className="card-content">
@@ -38,8 +38,8 @@ class ConnectionList extends Component {
   }
 }
 
-function mapStateToProps({ surveys }) {
-  return { surveys };
+function mapStateToProps(state) {
+  return state.conns;
 }
 
 export default connect(mapStateToProps, { fetchLIConnections })(ConnectionList);
