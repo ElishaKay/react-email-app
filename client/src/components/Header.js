@@ -13,13 +13,13 @@ class Header extends Component {
       default:
         return [
           <li key="1"><Payments /></li>,
-          <li key="3" style={{ margin: '0 10px' }}>
+          <li key="2" style={{ margin: '0 10px' }}>
             Credits: {this.props.auth.credits}
           </li>,
-          <li key="2"><a href="/surveys">Email Campaigns</a></li>,
-          <li key="2"><a href="/listats">LinkedIn Stats</a></li>,
-          <li key="2"><a href="/gastats">GA Stats</a></li>,
-          <li key="2"><a href="/api/logout">Logout</a></li>
+          <li key="3"><a href="/surveys">Email Campaigns</a></li>,
+          <li key="4"><a href="/listats">LinkedIn Stats</a></li>,
+          <li key="5"><a href="/gastats">GA Stats</a></li>,
+          <li key="6"><a href="/api/logout">Logout</a></li>
         ];
     }
   }

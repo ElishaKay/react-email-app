@@ -8,21 +8,20 @@ class ConnectionList extends Component {
   }
 
   renderConnections() {
-    return this.props.conns.reverse().map(survey => {
+    return this.props.linkedin.reverse().map(connection => {
       return (
-        <div className="card darken-1" key={survey._id}>
+        <div className="card darken-1" key={connection.id}>
           <div className="card-content">
-            <span className="card-title">{survey.title}</span>
+            <span className="card-title">{connection.c_name}</span>
             <p>
-              {survey.body}
+               Invite Message: {connection.invitation_message}
             </p>
             <p className="right">
-              Sent On: {new Date(survey.dateSent).toLocaleDateString()}
+              Sent On: {new Date(connection.date_conn_sent).toLocaleDateString()}
             </p>
           </div>
           <div className="card-action">
-            <a>Yes: {survey.yes}</a>
-            <a>No: {survey.no}</a>
+            <a>Accepted?: {connection.is_accepted}</a>         
           </div>
         </div>
       );
@@ -38,8 +37,8 @@ class ConnectionList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state.conns;
+function mapStateToProps({linkedin}) {
+  return { linkedin };
 }
 
 export default connect(mapStateToProps, { fetchLIConnections })(ConnectionList);
