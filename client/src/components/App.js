@@ -8,6 +8,7 @@ import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
 import LIStats from './LIStats';
+import GAStats from './GAStats';
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +23,8 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
-            <Route exact path="/stats" component={LIStats} />
+            <Route exact path="/listats" component={LIStats} />
+            <Route exact path="/gastats" component={GAStats} />
             <Route path="/surveys/new" component={SurveyNew} />
           </div>
         </BrowserRouter>
