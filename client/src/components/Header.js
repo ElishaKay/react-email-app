@@ -16,6 +16,8 @@ class Header extends Component {
           <li key="3" style={{ margin: '0 10px' }}>
             Credits: {this.props.auth.credits}
           </li>,
+          <li key="2"><a href="/surveys">Email Campaigns</a></li>,
+          <li key="2"><a href="/stats">LinkedIn Stats</a></li>,
           <li key="2"><a href="/api/logout">Logout</a></li>
         ];
     }

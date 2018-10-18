@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "chart.js": "^2.7.3",
     "materialize-css": "^0.99.0",
     "react": "^16.0.0-alpha.13",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.0.0-alpha.13",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
