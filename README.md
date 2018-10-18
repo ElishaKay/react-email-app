@@ -1,7 +1,15 @@
-Npm Install dependencies in server and client
+1) Npm Install dependencies in server and client
 
-Set environment variables
+2) Set environment variables
 
-
-Run within the server directory
+3) Run within the root directory
+```
 npm run dev
+```
+
+<h3>Linking to Heroku App</h3>
+Need to be logged in to Heroku CLI
+
+```
+heroku git:remote -a project
+```
