@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Chart from './stats/Chart';
 
-class Stats extends Component {
+class LIStats extends Component {
   constructor(){
     super();
     this.state = {
@@ -56,4 +56,4 @@ class Stats extends Component {
   }
 }
 
-export default Stats;
+export default LIStats;

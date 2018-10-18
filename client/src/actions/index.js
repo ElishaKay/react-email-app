@@ -26,7 +26,7 @@ export const fetchSurveys = () => async dispatch => {
   dispatch({ type: FETCH_SURVEYS, payload: res.data });
 };
 
-export const fetchSurveys = () => async dispatch => {
+export const fetchLICampaigns = () => async dispatch => {
   const res = await axios.get('/api/surveys');
 
   dispatch({ type: FETCH_SURVEYS, payload: res.data });
