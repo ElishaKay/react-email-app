@@ -23,7 +23,7 @@ class GAStats extends Component {
             frameborder="0" 
             style="border:0"
             display="initial"
-            allowfullscreen/>
+            allowFullScreen/>
         </div>
       </div>
     );
