@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Chart from './stats/Chart';
+import Chart from './linkedin/Chart';
+import ConnectionList from './linkedin/ConnectionList';
 
 class LIStats extends Component {
   constructor(){
@@ -47,7 +48,8 @@ class LIStats extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
+        <ConnectionList />
+        <div className="App-header"> 
           <h2>Welcome to React</h2>
         </div>
         <Chart chartData={this.state.chartData} location="City" legendPosition="right" displayLegend="true" displayTitle="true" location="Massachusetts" legendPosition="bottom"/>

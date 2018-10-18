@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEYS } from './types';
+import { FETCH_USER, FETCH_SURVEYS, FETCH_LI_CONNECTIONS } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -26,8 +26,9 @@ export const fetchSurveys = () => async dispatch => {
   dispatch({ type: FETCH_SURVEYS, payload: res.data });
 };
 
-export const fetchLICampaigns = () => async dispatch => {
-  const res = await axios.get('/api/surveys');
+export const fetchLIConnections = () => async dispatch => {
+  const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
 
-  dispatch({ type: FETCH_SURVEYS, payload: res.data });
+  console.log('res in actions index file: ', res)
+  dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
 };
