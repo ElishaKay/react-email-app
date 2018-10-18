@@ -30,5 +30,5 @@ export const fetchLIConnections = () => async dispatch => {
   const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
 
   console.log('res in actions index file: ', res)
-  dispatch({ type: FETCH_LI_CONNECTIONS, payload: res });
+  dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
 };
