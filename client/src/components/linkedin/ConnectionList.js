@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchLIConnections } from '../../actions';
 
 class ConnectionList extends Component {
-  componentWillMount() {
-    this.props.fetchLIConnections();
-  }
-
+  
   renderConnections() {
     return this.props.linkedin.sort(function(a,b){
       return (a.is_accepted === b.is_accepted) ? 0 : a ? -1 : 1;
@@ -39,8 +34,4 @@ class ConnectionList extends Component {
   }
 }
 
-function mapStateToProps({linkedin}) {
-  return { linkedin };
-}
-
-export default connect(mapStateToProps, { fetchLIConnections })(ConnectionList);
+export default ConnectionList;

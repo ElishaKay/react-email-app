@@ -2,6 +2,8 @@ import axios from 'axios';
 import { FETCH_USER, FETCH_SURVEYS, FETCH_LI_CONNECTIONS } from './types';
 import { GET_CONNECTIONS } from './sampleData/get_connections';
 
+import equijoin from '../utils/equijoin';
+
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
 
