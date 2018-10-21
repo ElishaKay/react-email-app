@@ -8,7 +8,7 @@ class ConnectionList extends Component {
   }
 
   renderConnections() {
-    return this.props.linkedin.sort(function(a,b){
+    return this.props.LIConnections.sort(function(a,b){
       return (a.is_accepted === b.is_accepted) ? 0 : a ? -1 : 1;
         }).map(connection => {
           return (
@@ -39,8 +39,8 @@ class ConnectionList extends Component {
   }
 }
 
-function mapStateToProps({linkedin}) {
-  return { linkedin };
+function mapStateToProps({LIConnections}) {
+  return { LIConnections };
 }
 
 export default connect(mapStateToProps, { fetchLIConnections })(ConnectionList);
