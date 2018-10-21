@@ -60,13 +60,11 @@ class LIStats extends Component {
           console.log('LITags: ',LITags);
     }
 
-    // <CampaignList campaignStats={campaignStats}/>
-
     return (
       <div className="App">
         <div className="App-header"> 
             <h2>Your LinkedIn Campaigns</h2>
-              
+              <CampaignList campaignStats={LITags}/>
         </div>
       </div>
     );

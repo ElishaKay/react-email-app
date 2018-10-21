@@ -12,16 +12,17 @@ class CampaignList extends Component {
           return (
             <div className="card darken-1" key={campaign.id}>
               <div className="card-content">
-                <span className="card-title">{}</span>
+                <span className="card-title">{campaign.tag_name}</span>
                 <p>
-                   Invite Message: {}
+                   Total Amount of Invites Sent: {campaign.totalInvitesSent}
                 </p>
                 <p className="right">
-                  Sent On: {}
+                  Total Amount of Invites Accepted: {campaign.totalInvitesAccepted}
                 </p>
               </div>
               <div className="card-action">
-                <a>Accepted: {}</a>         
+                <a>Acceptance Rate:  
+                  {Math.floor((campaign.totalInvitesAccepted/campaign.totalInvitesSent) * 100)+'%'}</a>         
               </div>
             </div>
           );
