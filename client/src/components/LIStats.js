@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchLIDownloads } from '../actions';
+
 import Chart from './linkedin/Chart';
 import ConnectionList from './linkedin/ConnectionList';
 
@@ -11,6 +14,7 @@ class LIStats extends Component {
   }
 
   componentWillMount(){
+    this.props.fetchLIDownloads();
     this.getChartData();
   }
 
@@ -46,6 +50,8 @@ class LIStats extends Component {
   }
 
   render() {
+    console.log('this.props in LIStats: ',this.props);
+    
     return (
       <div className="App">
         <ConnectionList />
@@ -58,4 +64,8 @@ class LIStats extends Component {
   }
 }
 
-export default LIStats;
+function mapStateToProps({LIDownloads}) {
+  return { LIDownloads };
+}
+
+export default connect(mapStateToProps, { fetchLIDownloads })(LIStats);

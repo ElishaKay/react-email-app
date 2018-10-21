@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEYS, FETCH_LI_CONNECTIONS } from './types';
+import { FETCH_USER, FETCH_SURVEYS, FETCH_LI_CONNECTIONS, FETCH_LI_DOWNLOADS } from './types';
 import { GET_CONNECTIONS } from './sampleData/get_connections';
 import { GET_DOWNLOADS } from './sampleData/get_downloads';
 
@@ -44,6 +44,6 @@ export const fetchLIDownloads = () => async dispatch => {
   
   const res = GET_DOWNLOADS;
 
-  console.log('res in actions index file: ', res)
+  console.log('res in fetchLIDownloads in actions index file: ', res)
   dispatch({ type: FETCH_LI_DOWNLOADS, payload: res});
 };
