@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import equijoin from '../utils/equijoin';
+
 import { connect } from 'react-redux';
 import { fetchLIDownloads, 
           fetchLIConnections,
@@ -55,11 +57,19 @@ class LIStats extends Component {
   }
 
   render() {
-    console.log('this.props in LIStats: ',this.props);
-    
+    let {LIDownloads, LIConnections, LITaggedConnections} = this.props;
+
+    if(LIConnections.length != 0 && LITaggedConnections.length != 0){ 
+      console.log('LIConnections in LIStats: ',LIConnections);
+      console.log('LITaggedConnections in LIStats: ',LITaggedConnections);
+    }
+     
+    // <ConnectionList />
+    // <CampaignList />
+
     return (
       <div className="App">
-        <ConnectionList />
+
         <div className="App-header"> 
           <h2>Welcome to React</h2>
         </div>
