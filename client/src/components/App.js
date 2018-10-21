@@ -7,7 +7,7 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
-import LIStats from './LIStats';
+import LIMainPage from './LIMainPage';
 import GAStats from './GAStats';
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
-            <Route exact path="/listats" component={LIStats} />
+            <Route exact path="/listats" component={LIMainPage} />
             <Route exact path="/gastats" component={GAStats} />
             <Route path="/surveys/new" component={SurveyNew} />
           </div>

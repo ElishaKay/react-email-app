@@ -1,10 +1,10 @@
 // SurveyNew shows SurveyForm and SurveyFormReview
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLIConnections } from '../../actions';
+import { fetchLIConnections } from '../actions';
 
-import ConnectionList from './ConnectionList';
-import Chart from './Chart';
+import ConnectionList from './linkedin/ConnectionList';
+import Chart from './linkedin/Chart';
 
 class LIMainPage extends Component {
   componentWillMount() {
@@ -13,6 +13,9 @@ class LIMainPage extends Component {
   }
 
   renderContent() {
+    let { linkedin } = this.props; 
+    console.log('this.props in LIMainPage: ',this.props);
+
     if (this.state.currentPage === 'Chart') {
       return (
         <Chart />
@@ -20,7 +23,7 @@ class LIMainPage extends Component {
     }
 
     return (
-      <ConnectionList />
+      <ConnectionList linkedin={linkedin} />
     );
   }
 
