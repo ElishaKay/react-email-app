@@ -34,6 +34,7 @@ class LIStats extends Component {
 
     if(LIConnections.length != 0 && LITaggedConnections.length != 0 && 
         LITags.length != 0){ 
+          console.log('LIConnections in LIStats: ',LIConnections);
           console.log('LITaggedConnections in LIStats: ',LITaggedConnections);
 
           const campaignStats = equijoin(LIConnections, LITaggedConnections, "c_public_id", "connection_id",
@@ -43,9 +44,15 @@ class LIStats extends Component {
 
           for (let i = 0; i < LITags.length; i++) {
               LITags[i].totalInvitesSent=0;
+              LITags[i].totalInvitesAccepted=0;
+
               for (let j = 0; j < campaignStats.length; j++) { 
                   if(LITags[i].tag_name==campaignStats[j].tags){
                     LITags[i].totalInvitesSent++;
+                    //check acceptance rate
+                    if(campaignStats[j].is_accepted=='true' || campaignStats[j].is_accepted=='engaged'){
+                      LITags[i].totalInvitesAccepted++;
+                    }
                   }
               }
           }
@@ -53,13 +60,11 @@ class LIStats extends Component {
           console.log('LITags: ',LITags);
     }
 
-    // <CampaignList campaignStats={campaignStats}/>
-
     return (
       <div className="App">
         <div className="App-header"> 
             <h2>Your LinkedIn Campaigns</h2>
-              
+              <CampaignList campaignStats={LITags}/>
         </div>
       </div>
     );
