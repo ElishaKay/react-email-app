@@ -9,13 +9,6 @@ class Chart extends Component{
     }
   }
 
-  // static defaultProps = {
-  //   displayTitle:true,
-  //   displayLegend: true,
-  //   legendPosition:'right',
-  //   location:'City'
-  // }
-
   render(){
     return (
       <div className="chart">
@@ -67,5 +60,13 @@ class Chart extends Component{
     )
   }
 }
+
+Chart.defaultProps = {
+    displayTitle:true,
+    displayLegend: true,
+    legendPosition:'right',
+    location:'City'
+}
+
 
 export default Chart;
