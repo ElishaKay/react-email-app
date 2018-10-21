@@ -63,7 +63,7 @@ class LIStats extends Component {
         <div className="App-header"> 
           <h2>Welcome to React</h2>
         </div>
-        <Chart chartData={this.state.chartData} location="City" legendPosition="right" displayLegend="true" displayTitle="true" location="Massachusetts" legendPosition="bottom"/>
+        <Chart chartData={this.state.chartData} location="Massachusetts" legendPosition="bottom"/>
       </div>
     );
   }
