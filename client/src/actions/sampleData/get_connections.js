@@ -2,7 +2,7 @@
 //Elisha
 // http://45.55.120.26/get_connections/5bc2231aca978bf632655324
 
-// export const GET_CONNECTIONS = 
+export const GET_CONNECTIONS = 
 
 {
 "success": "1",
