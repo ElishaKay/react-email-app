@@ -1,7 +1,7 @@
 // Elisha's Data
 // http://45.55.120.26/get_downloads?user_id=5bc2231aca978bf632655324
 
-// export const GET_DOWNLOADS =
+export const GET_DOWNLOADS =
 
 [
 	{

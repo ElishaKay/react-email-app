@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { FETCH_USER, FETCH_SURVEYS, FETCH_LI_CONNECTIONS } from './types';
 import { GET_CONNECTIONS } from './sampleData/get_connections';
+import { GET_DOWNLOADS } from './sampleData/get_downloads';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -35,4 +36,14 @@ export const fetchLIConnections = () => async dispatch => {
 
   console.log('res in actions index file: ', res)
   dispatch({ type: FETCH_LI_CONNECTIONS, payload: res});
+};
+
+export const fetchLIDownloads = () => async dispatch => {
+  // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
+  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
+  
+  const res = GET_DOWNLOADS;
+
+  console.log('res in actions index file: ', res)
+  dispatch({ type: FETCH_LI_DOWNLOADS, payload: res});
 };

@@ -8,5 +8,6 @@ export default combineReducers({
   auth: authReducer,
   form: reduxForm,
   surveys: surveysReducer,
-  LIConnections: LIConnectionsReducer
+  LIConnections: LIConnectionsReducer,
+  LIDownload: LIDownloadReducer
 });
