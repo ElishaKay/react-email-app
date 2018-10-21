@@ -1,7 +1,7 @@
 //Elisha's
 // http://45.55.120.26/get_tagged_connections_of_user/?user_id=5bc2231aca978bf632655324
 
-// export const GET_TAGGED_CONNECTIONS = 
+export const GET_TAGGED_CONNECTIONS = 
 
 [
 {
