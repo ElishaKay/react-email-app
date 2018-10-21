@@ -1,15 +1,16 @@
 import axios from 'axios';
 import { FETCH_USER, 
           FETCH_SURVEYS, 
+
           FETCH_LI_CONNECTIONS, 
           FETCH_LI_TAGGED_CONNECTIONS,
-          FETCH_LI_DOWNLOADS } from './types';
+          FETCH_LI_DOWNLOADS,
+          FETCH_LI_TAGS } from './types';
 
 import { GET_CONNECTIONS } from './sampleData/get_connections';
 import { GET_TAGGED_CONNECTIONS } from './sampleData/get_tagged_connections';
 import { GET_DOWNLOADS } from './sampleData/get_downloads';
-
-
+import { GET_TAGS } from './sampleData/get_tags';
 
 
 export const fetchUser = () => async dispatch => {
@@ -42,8 +43,6 @@ export const fetchLIConnections = () => async dispatch => {
   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
   
   const res = GET_CONNECTIONS;
-
-  console.log('res in actions index file: ', res)
   dispatch({ type: FETCH_LI_CONNECTIONS, payload: res});
 };
 
@@ -52,8 +51,6 @@ export const fetchLITaggedConnections = () => async dispatch => {
   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
   
   const res = GET_TAGGED_CONNECTIONS;
-
-  console.log('res in tagged_connections ACTIONS index file: ', res)
   dispatch({ type: FETCH_LI_TAGGED_CONNECTIONS, payload: res});
 };
 
@@ -62,9 +59,15 @@ export const fetchLIDownloads = () => async dispatch => {
   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
   
   const res = GET_DOWNLOADS;
-
-  console.log('res in fetchLIDownloads in actions index file: ', res)
   dispatch({ type: FETCH_LI_DOWNLOADS, payload: res});
+};
+
+export const fetchLITags = () => async dispatch => {
+  // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
+  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
+  
+  const res = GET_TAGS;
+  dispatch({ type: FETCH_LI_TAGS, payload: res});
 };
 
 

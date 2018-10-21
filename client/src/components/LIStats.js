@@ -1,79 +1,68 @@
 import React, { Component } from 'react';
+import equijoin from '../utils/equijoin';
+
 import { connect } from 'react-redux';
 import { fetchLIDownloads, 
           fetchLIConnections,
-          fetchLITaggedConnections } from '../actions';
+          fetchLITaggedConnections,
+          fetchLITags } from '../actions';
 
+import CampaignList from './linkedin/CampaignList';
 import Chart from './linkedin/Chart';
 import ConnectionList from './linkedin/ConnectionList';
 
 class LIStats extends Component {
-  constructor(){
-    super();
-    this.state = {
-      chartData:{}
-    }
-  }
 
   componentWillMount(){
+    this.props.fetchLITags();
     this.props.fetchLIDownloads();
     this.props.fetchLIConnections();
     this.props.fetchLITaggedConnections();
-
-    this.getChartData();
   }
 
-  getChartData(){
-    // Ajax calls here
-    this.setState({
-      chartData:{
-        labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-        datasets:[
-          {
-            label:'Population',
-            data:[
-              617594,
-              181045,
-              153060,
-              106519,
-              105162,
-              95072
-            ],
-            backgroundColor:[
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(255, 99, 132, 0.6)'
-            ]
-          }
-        ]
-      }
-    });
-  }
+  groupBy(xs, key) {
+    return xs.reduce(function(rv, x) {
+      (rv[x[key]] = rv[x[key]] || []).push(x);
+      return rv;
+    }, {});
+  };
+
 
   render() {
-    console.log('this.props in LIStats: ',this.props);
-    
+    let {LIDownloads, LIConnections, LITaggedConnections} = this.props;
+    let campaignStats = [];
+
+    if(LIConnections.length != 0 && LITaggedConnections.length != 0){ 
+      console.log('LIConnections in LIStats: ',LIConnections);
+      console.log('LITaggedConnections in LIStats: ',LITaggedConnections);
+
+      const campaignStats = equijoin(LIConnections, LITaggedConnections, "c_public_id", "connection_id",
+      ({c_name, is_accepted}, {tags, id}) => ({c_name,is_accepted, tags, id}));
+
+      this.groupBy(campaignStats);
+
+      console.log('campaignStats',campaignStats);
+    }
+
+    // <CampaignList campaignStats={campaignStats}/>
+
     return (
       <div className="App">
-        <ConnectionList />
         <div className="App-header"> 
-          <h2>Welcome to React</h2>
+            <h2>Your LinkedIn Campaigns</h2>
+              
         </div>
-        <Chart chartData={this.state.chartData} location="Massachusetts" legendPosition="bottom"/>
       </div>
     );
   }
 }
 
-function mapStateToProps({LIDownloads, LIConnections, LITaggedConnections }) {
-  return { LIDownloads, LIConnections, LITaggedConnections };
+function mapStateToProps({LIDownloads, LIConnections, LITaggedConnections, LITags }) {
+  return { LIDownloads, LIConnections, LITaggedConnections, LITags };
 }
 
 export default connect(mapStateToProps, 
   { fetchLIDownloads, 
+  fetchLITags, 
   fetchLIConnections, 
   fetchLITaggedConnections })(LIStats);
