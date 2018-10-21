@@ -1,7 +1,16 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEYS, FETCH_LI_CONNECTIONS, FETCH_LI_DOWNLOADS } from './types';
+import { FETCH_USER, 
+          FETCH_SURVEYS, 
+          FETCH_LI_CONNECTIONS, 
+          FETCH_LI_TAGGED_CONNECTIONS,
+          FETCH_LI_DOWNLOADS } from './types';
+
 import { GET_CONNECTIONS } from './sampleData/get_connections';
+import { GET_TAGGED_CONNECTIONS } from './sampleData/get_tagged_connections';
 import { GET_DOWNLOADS } from './sampleData/get_downloads';
+
+
+
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -38,6 +47,16 @@ export const fetchLIConnections = () => async dispatch => {
   dispatch({ type: FETCH_LI_CONNECTIONS, payload: res});
 };
 
+export const fetchLITaggedConnections = () => async dispatch => {
+  // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
+  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
+  
+  const res = GET_TAGGED_CONNECTIONS;
+
+  console.log('res in tagged_connections ACTIONS index file: ', res)
+  dispatch({ type: FETCH_LI_TAGGED_CONNECTIONS, payload: res});
+};
+
 export const fetchLIDownloads = () => async dispatch => {
   // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
@@ -47,3 +66,22 @@ export const fetchLIDownloads = () => async dispatch => {
   console.log('res in fetchLIDownloads in actions index file: ', res)
   dispatch({ type: FETCH_LI_DOWNLOADS, payload: res});
 };
+
+
+
+
+
+// export const fetchLICampaigns = () => async dispatch => {
+//   // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
+//   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
+  
+//   const connections = GET_CONNECTIONS;
+//   const tagged_connections = GET_TAGGED_CONNECTIONS;
+
+//   const elishaTaggedConns = equijoin(values[0].conns, values[2], "c_public_id", "connection_id",
+//     ({c_name, is_accepted}, {tags}) => ({c_name,is_accepted, tags}));
+
+//   console.log('res in actions index file: ', res)
+//   dispatch({ type: FETCH_LI_CONNECTIONS, payload: res});
+// };
+
