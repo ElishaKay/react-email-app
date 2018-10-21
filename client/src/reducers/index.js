@@ -5,6 +5,8 @@ import surveysReducer from './surveysReducer';
 import LIConnectionsReducer from './LIConnectionsReducer';
 import LITaggedConnectionsReducer from './LITaggedConnectionsReducer';
 import LIDownloadsReducer from './LIDownloadsReducer';
+import LITagsReducer from './LITagsReducer';
+
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +14,6 @@ export default combineReducers({
   surveys: surveysReducer,
   LIConnections: LIConnectionsReducer,
   LITaggedConnections: LITaggedConnectionsReducer,
-  LIDownloads: LIDownloadsReducer
+  LIDownloads: LIDownloadsReducer,
+  LITags: LITagsReducer 
 });

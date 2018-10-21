@@ -1,13 +1,17 @@
 import axios from 'axios';
 import { FETCH_USER, 
           FETCH_SURVEYS, 
+
           FETCH_LI_CONNECTIONS, 
           FETCH_LI_TAGGED_CONNECTIONS,
-          FETCH_LI_DOWNLOADS } from './types';
+          FETCH_LI_DOWNLOADS,
+          FETCH_LI_TAGS } from './types';
 
 import { GET_CONNECTIONS } from './sampleData/get_connections';
 import { GET_TAGGED_CONNECTIONS } from './sampleData/get_tagged_connections';
 import { GET_DOWNLOADS } from './sampleData/get_downloads';
+import { GET_TAGS } from './sampleData/get_tags';
+
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -56,6 +60,14 @@ export const fetchLIDownloads = () => async dispatch => {
   
   const res = GET_DOWNLOADS;
   dispatch({ type: FETCH_LI_DOWNLOADS, payload: res});
+};
+
+export const fetchLITags = () => async dispatch => {
+  // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
+  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
+  
+  const res = GET_TAGS;
+  dispatch({ type: FETCH_LI_TAGS, payload: res});
 };
 
 
