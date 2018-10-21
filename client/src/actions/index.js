@@ -9,9 +9,6 @@ import { GET_CONNECTIONS } from './sampleData/get_connections';
 import { GET_TAGGED_CONNECTIONS } from './sampleData/get_tagged_connections';
 import { GET_DOWNLOADS } from './sampleData/get_downloads';
 
-
-
-
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
 
@@ -42,8 +39,6 @@ export const fetchLIConnections = () => async dispatch => {
   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
   
   const res = GET_CONNECTIONS;
-
-  console.log('res in actions index file: ', res)
   dispatch({ type: FETCH_LI_CONNECTIONS, payload: res});
 };
 
@@ -52,8 +47,6 @@ export const fetchLITaggedConnections = () => async dispatch => {
   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
   
   const res = GET_TAGGED_CONNECTIONS;
-
-  console.log('res in tagged_connections ACTIONS index file: ', res)
   dispatch({ type: FETCH_LI_TAGGED_CONNECTIONS, payload: res});
 };
 
@@ -62,8 +55,6 @@ export const fetchLIDownloads = () => async dispatch => {
   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
   
   const res = GET_DOWNLOADS;
-
-  console.log('res in fetchLIDownloads in actions index file: ', res)
   dispatch({ type: FETCH_LI_DOWNLOADS, payload: res});
 };
 
