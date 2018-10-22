@@ -77,15 +77,15 @@ export const fetchLIDownloads = () => async dispatch => {
 
 export const fetchLITags = () => async dispatch => {
   //Elisha's tags
-  // const res1 = axios.get('http://45.55.120.26/get_tags/?user_id=5bc2231aca978bf632655324');
-  // //Jason's tags
-  // const res2 = axios.get('http://45.55.120.26/get_tags/?user_id=5b3b0f2b126f883d076adb1d');
+  const res1 = axios.get('http://45.55.120.26/get_tags/?user_id=5bc2231aca978bf632655324');
+  //Jason's tags
+  const res2 = axios.get('http://45.55.120.26/get_tags/?user_id=5b3b0f2b126f883d076adb1d');
 
-  // Promise.all([res1, res2]).then(function(values) {
+  Promise.all([res1, res2]).then(function(values) {
       
-  //     const arr3 = values[0].data.tags.concat(values[1].data.tags);
-  //     dispatch({ type: FETCH_LI_TAGS, payload: arr3});
-  // })
+      const arr3 = values[0].data.tags.concat(values[1].data.tags);
+      dispatch({ type: FETCH_LI_TAGS, payload: arr3});
+  })
 
 };
 
