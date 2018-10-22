@@ -55,15 +55,15 @@ export const fetchLIConnections = () => async dispatch => {
 export const fetchLITaggedConnections = () => async dispatch => {
 
   //   //Elisha's tagged connections
-  // var promise1 = ajaxCall('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5bc2231aca978bf632655324');
+  var res1 = axios.get('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5bc2231aca978bf632655324');
 
   // //Jason's tagged connections
-  // var promise2 = ajaxCall('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5b3b0f2b126f883d076adb1d');
+  var res2 = axios.get('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5b3b0f2b126f883d076adb1d');
 
-
-
-  // const res = GET_TAGGED_CONNECTIONS;
-  // dispatch({ type: FETCH_LI_TAGGED_CONNECTIONS, payload: res.data});
+  Promise.all([res1, res2]).then(function(values) {      
+      const arr3 = values[0].data.concat(values[1].data);
+      dispatch({ type: FETCH_LI_TAGGED_CONNECTIONS, payload: arr3});
+  })
 };
 
 export const fetchLIDownloads = () => async dispatch => {
@@ -75,17 +75,15 @@ export const fetchLIDownloads = () => async dispatch => {
 
 export const fetchLITags = () => async dispatch => {
   //Elisha's tags
-  const res1 = axios.get('http://45.55.120.26/get_tags/?user_id=5bc2231aca978bf632655324');
-  //Jason's tags
-  const res2 = axios.get('http://45.55.120.26/get_tags/?user_id=5b3b0f2b126f883d076adb1d');
+  // const res1 = axios.get('http://45.55.120.26/get_tags/?user_id=5bc2231aca978bf632655324');
+  // //Jason's tags
+  // const res2 = axios.get('http://45.55.120.26/get_tags/?user_id=5b3b0f2b126f883d076adb1d');
 
-  Promise.all([res1, res2]).then(function(values) {
+  // Promise.all([res1, res2]).then(function(values) {
       
-      const arr3 = values[0].data.tags.concat(values[1].data.tags);
-      console.log('arr3: ',arr3);
-      dispatch({ type: FETCH_LI_TAGS, payload: arr3});
-  })
-
+  //     const arr3 = values[0].data.tags.concat(values[1].data.tags);
+  //     dispatch({ type: FETCH_LI_TAGS, payload: arr3});
+  // })
 
 };
 
