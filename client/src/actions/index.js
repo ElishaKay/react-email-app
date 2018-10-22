@@ -38,53 +38,54 @@ export const fetchSurveys = () => async dispatch => {
   dispatch({ type: FETCH_SURVEYS, payload: res.data });
 };
 
+// JSON calls for LI DATA
+// Note: for SAMPLE-DATA, USE payload: res (INSTEAD OF res.data)
+
 export const fetchLIConnections = () => async dispatch => {
-  // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
-  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
-  
-  const res = GET_CONNECTIONS;
-  dispatch({ type: FETCH_LI_CONNECTIONS, payload: res});
+    //Elisha's connections
+  // var promise1 = ajaxCall('http://45.55.120.26/get_connections/5bc2231aca978bf632655324');        
+
+  // //Jason's connections (on Elisha's pc)
+  // var promise2 = ajaxCall('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
+
+  // // const res = GET_CONNECTIONS;
+  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data});
 };
 
 export const fetchLITaggedConnections = () => async dispatch => {
-  // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
-  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
-  
-  const res = GET_TAGGED_CONNECTIONS;
-  dispatch({ type: FETCH_LI_TAGGED_CONNECTIONS, payload: res});
+
+  //   //Elisha's tagged connections
+  // var promise1 = ajaxCall('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5bc2231aca978bf632655324');
+
+  // //Jason's tagged connections
+  // var promise2 = ajaxCall('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5b3b0f2b126f883d076adb1d');
+
+
+
+  // const res = GET_TAGGED_CONNECTIONS;
+  // dispatch({ type: FETCH_LI_TAGGED_CONNECTIONS, payload: res.data});
 };
 
 export const fetchLIDownloads = () => async dispatch => {
-  // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
-  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
-  
-  const res = GET_DOWNLOADS;
-  dispatch({ type: FETCH_LI_DOWNLOADS, payload: res});
+
+  // const res = GET_DOWNLOADS;
+  // dispatch({ type: FETCH_LI_DOWNLOADS, payload: res.data});
 };
+
 
 export const fetchLITags = () => async dispatch => {
-  // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
-  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
-  
-  const res = GET_TAGS;
-  dispatch({ type: FETCH_LI_TAGS, payload: res});
+  //Elisha's tags
+  const res1 = axios.get('http://45.55.120.26/get_tags/?user_id=5bc2231aca978bf632655324');
+  //Jason's tags
+  const res2 = axios.get('http://45.55.120.26/get_tags/?user_id=5b3b0f2b126f883d076adb1d');
+
+  Promise.all([res1, res2]).then(function(values) {
+      
+      const arr3 = values[0].data.tags.concat(values[1].data.tags);
+      console.log('arr3: ',arr3);
+      dispatch({ type: FETCH_LI_TAGS, payload: arr3});
+  })
+
+
 };
-
-
-
-
-
-// export const fetchLICampaigns = () => async dispatch => {
-//   // const res = await axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
-//   // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data });
-  
-//   const connections = GET_CONNECTIONS;
-//   const tagged_connections = GET_TAGGED_CONNECTIONS;
-
-//   const elishaTaggedConns = equijoin(values[0].conns, values[2], "c_public_id", "connection_id",
-//     ({c_name, is_accepted}, {tags}) => ({c_name,is_accepted, tags}));
-
-//   console.log('res in actions index file: ', res)
-//   dispatch({ type: FETCH_LI_CONNECTIONS, payload: res});
-// };
 
