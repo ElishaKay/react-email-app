@@ -43,13 +43,15 @@ export const fetchSurveys = () => async dispatch => {
 
 export const fetchLIConnections = () => async dispatch => {
     //Elisha's connections
-  // var promise1 = ajaxCall('http://45.55.120.26/get_connections/5bc2231aca978bf632655324');        
+  var res1 = axios.get('http://45.55.120.26/get_connections/5bc2231aca978bf632655324');        
 
-  // //Jason's connections (on Elisha's pc)
-  // var promise2 = ajaxCall('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
+  //Jason's connections (on Elisha's pc)
+  var res2 = axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
 
-  // // const res = GET_CONNECTIONS;
-  // dispatch({ type: FETCH_LI_CONNECTIONS, payload: res.data});
+  Promise.all([res1, res2]).then(function(values) {      
+      const arr3 = values[0].data.conns.concat(values[1].data.conns);
+      dispatch({ type: FETCH_LI_CONNECTIONS, payload: arr3});
+  })
 };
 
 export const fetchLITaggedConnections = () => async dispatch => {
