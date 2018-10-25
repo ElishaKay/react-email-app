@@ -16,34 +16,65 @@ module.exports = app => {
     res.send(receivers);
   });
 
+  app.post('/add_profile', async (req, res) => {
+    const {  firstName,
+              lastName,
+              entityUrn,
+              objectUrn,
+              headline,
+              publicIdentifier,
+              industryCode,
+              picture,
+              trackingId,
+              locationName,
+              postalCode,
+              versionTag,
+              schoolName,
+              fieldOfStudy,
+              title,
+              companyName,
+              languages,
+              email,
+              phone,
+              skills } = req.body;
 
-
-  app.post('/add_profile', requireLogin, requireCredits, async (req, res) => {
-    const { title, subject, body, recipients } = req.body;
-
-    const survey = new Survey({
+    const receiver = new Receiver({
+      firstName,
+      lastName,
+      entityUrn,
+      objectUrn,
+      headline,
+      publicIdentifier,
+      industryCode,
+      picture,
+      trackingId,
+      locationName,
+      postalCode,
+      versionTag,
+      schoolName,
+      fieldOfStudy,
       title,
-      subject,
-      body,
-      recipients: recipients.split(',').map(email => ({ email: email.trim() })),
+      companyName,
+      languages,
+      email,
+      phone,
+      skills: skills.split(',').map(skill => ({ skill: skill.trim() })),
       _user: req.user.id,
-      dateSent: Date.now()
+      dateAccepted: Date.now()
     });
 
-    console.log(survey);
+    console.log('receiver: ',receiver);
 
     // Great place to send an email!
 
-    console.log('survey.recipients: ',survey.recipients);
 
     try {
-      await survey.save();
+      await receiver.save();
     } catch (err) {
       res.status(422).send(err);
     }
 
-    const user = await req.user.save();
-    res.send(user);
+    // res.send(user);
    
   });
 };
