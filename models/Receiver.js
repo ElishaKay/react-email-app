@@ -25,7 +25,6 @@ languages: String,
 skills: [SkillSchema],
 email: String,
 phone: String,
-_user: { type: Schema.Types.ObjectId, ref: 'User' },
 dateAccepted: Date
 });
 

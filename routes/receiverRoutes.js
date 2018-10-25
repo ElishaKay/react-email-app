@@ -68,7 +68,6 @@ module.exports = app => {
       email,
       phone,
       skills: skills.split(',').map(skill => ({ skill: skill.trim() })),
-      _user: req.user.id,
       dateAccepted: Date.now()
     });
 
