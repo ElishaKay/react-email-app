@@ -8,6 +8,13 @@ const requireCredits = require('../middlewares/requireCredits');
 const Receiver = mongoose.model('receivers');
 
 module.exports = app => {
+
+  app.use(function(req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+  });
+
   app.get('/api/receivers', async (req, res) => {
     const receivers = await Receiver.find({ _user: req.user.id }).select({
       recipients: false
@@ -17,6 +24,8 @@ module.exports = app => {
   });
 
   app.post('/add_profile', async (req, res) => {
+    console.log('req.body in receivers route', req.body);
+
     const {  firstName,
               lastName,
               entityUrn,

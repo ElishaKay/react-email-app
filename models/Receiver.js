@@ -5,7 +5,6 @@ const { Schema } = mongoose;
 const SkillSchema = require('./Skill');
 
 const receiverSchema = new Schema({
-  {
 firstName: String,
 lastName: String,
 entityUrn: String,
