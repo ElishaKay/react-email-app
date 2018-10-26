@@ -76,7 +76,7 @@ module.exports = app => {
 
       const mailer = new Mailer(survey, crowdFundTemplate3(survey), i);
 
-      console.log(`loop #1 ${i} within the survey recipients`)
+      console.log(`loop #${i} within the survey recipients`)
 
       try {
         await mailer.send();
