@@ -20,14 +20,6 @@ class LIStats extends Component {
     this.props.fetchLITaggedConnections();
   }
 
-  groupBy(xs, key) {
-    return xs.reduce(function(rv, x) {
-      (rv[x[key]] = rv[x[key]] || []).push(x);
-      return rv;
-    }, {});
-  };
-
-
   render() {
     let {LIDownloads, LIConnections, LITaggedConnections, LITags} = this.props;
     let campaignStats = [];
