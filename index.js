@@ -13,8 +13,12 @@ mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
 const app = express();
-
+// parse application/json
 app.use(bodyParser.json());
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,

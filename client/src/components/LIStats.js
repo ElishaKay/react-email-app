@@ -45,6 +45,7 @@ class LIStats extends Component {
           for (let i = 0; i < LITags.length; i++) {
               LITags[i].totalInvitesSent=0;
               LITags[i].totalInvitesAccepted=0;
+              LITags[i].totalEngaged=0;
 
               for (let j = 0; j < campaignStats.length; j++) { 
                   if(LITags[i].tag_name==campaignStats[j].tags){
@@ -52,6 +53,9 @@ class LIStats extends Component {
                     //check acceptance rate
                     if(campaignStats[j].is_accepted=='true' || campaignStats[j].is_accepted=='engaged'){
                       LITags[i].totalInvitesAccepted++;
+                    }
+                    if(campaignStats[j].is_accepted=='engaged') {
+                      LITags[i].totalEngaged++;
                     }
                   }
               }
