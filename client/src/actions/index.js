@@ -1,9 +1,9 @@
 import axios from 'axios';
+import equijoin from '../utils/equijoin';
+
 import { FETCH_USER, 
           FETCH_SURVEYS, 
-
-          FETCH_LI_CONNECTIONS, 
-          FETCH_LI_TAGGED_CONNECTIONS,
+          FETCH_LI_CONNECTIONS,
           FETCH_LI_DOWNLOADS,
           FETCH_LI_TAGS } from './types';
 
@@ -42,31 +42,37 @@ export const fetchSurveys = () => async dispatch => {
 // Note: for SAMPLE-DATA, USE payload: res (INSTEAD OF res.data)
 
 export const fetchLIConnections = () => async dispatch => {
-    //Elisha's connections
+  //Elisha's connections
   var res1 = axios.get('http://45.55.120.26/get_connections/5bc2231aca978bf632655324');        
-
   //Jason's connections (on Elisha's pc)
   var res2 = axios.get('http://45.55.120.26/get_connections/5b3b0f2b126f883d076adb1d');
+  //Elisha's tagged connections
+  var res3 = axios.get('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5bc2231aca978bf632655324');
+  //Jason's tagged connections
+  var res4 = axios.get('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5b3b0f2b126f883d076adb1d');
 
-  Promise.all([res1, res2]).then(function(values) {      
-      const arr3 = values[0].data.conns.concat(values[1].data.conns);
-      dispatch({ type: FETCH_LI_CONNECTIONS, payload: arr3});
+  Promise.all([res1, res2, res3, res4]).then(function(values) {      
+      let LIConnections = values[0].data.conns.concat(values[1].data.conns);
+      let LITaggedConnections =  values[2].data.concat(values[3].data);
+
+      console.log('LIConnections',LIConnections);
+      console.log('LITaggedConnections',LITaggedConnections);
+
+       console.log('LIConnections',LIConnections);
+
+       console.log('equijoin: ',equijoin)
+
+
+      let newConnectionList = equijoin(LIConnections, LITaggedConnections, "c_public_id", "connection_id",
+      ({c_name, c_profile_url, c_public_id, is_accepted, invitation_message, follow_up_message, date_conn_sent}, {tags, id}) => ({c_name, c_profile_url, c_public_id, is_accepted, invitation_message, follow_up_message, date_conn_sent, tags, id}));
+
+      console.log('newConnectionList: ',newConnectionList)
+
+      dispatch({ type: FETCH_LI_CONNECTIONS, payload: newConnectionList});
   })
 };
 
-export const fetchLITaggedConnections = () => async dispatch => {
 
-  //   //Elisha's tagged connections
-  var res1 = axios.get('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5bc2231aca978bf632655324');
-
-  // //Jason's tagged connections
-  var res2 = axios.get('http://45.55.120.26/get_tagged_connections_of_user/?user_id=5b3b0f2b126f883d076adb1d');
-
-  Promise.all([res1, res2]).then(function(values) {      
-      const arr3 = values[0].data.concat(values[1].data);
-      dispatch({ type: FETCH_LI_TAGGED_CONNECTIONS, payload: arr3});
-  })
-};
 
 export const fetchLIDownloads = () => async dispatch => {
 
