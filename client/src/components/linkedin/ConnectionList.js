@@ -47,7 +47,10 @@ class ConnectionList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
+        <div className="App-header"> 
+          <h3>{this.props.match.params.campaign}: Campaign Leads</h3>    
+        </div>
         {this.renderConnections()}
       </div>
     );
