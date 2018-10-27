@@ -54,14 +54,11 @@ export const fetchLIConnections = () => async dispatch => {
   Promise.all([res1, res2, res3, res4]).then(function(values) {      
       let LIConnections = values[0].data.conns.concat(values[1].data.conns);
       let LITaggedConnections =  values[2].data.concat(values[3].data);
-
+      //debugger
       console.log('LIConnections',LIConnections);
       console.log('LITaggedConnections',LITaggedConnections);
-
        console.log('LIConnections',LIConnections);
-
        console.log('equijoin: ',equijoin)
-
 
       let newConnectionList = equijoin(LIConnections, LITaggedConnections, "c_public_id", "connection_id",
       ({c_name, c_profile_url, c_public_id, is_accepted, invitation_message, follow_up_message, date_conn_sent}, {tags, id}) => ({c_name, c_profile_url, c_public_id, is_accepted, invitation_message, follow_up_message, date_conn_sent, tags, id}));

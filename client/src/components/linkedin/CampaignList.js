@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchLIConnections } from '../../actions';
 
@@ -30,6 +31,9 @@ class CampaignList extends Component {
                 <a>Acceptance Rate:  
                   {Math.floor((campaign.totalInvitesAccepted/campaign.totalInvitesSent) * 100)+'%'}</a>         
               </div>
+              <Link className="right" to={`/listats/leads/${campaign.tag_name}`} className="btn btn-info">
+                View Leads
+              </Link>
             </div>
           );
         });
