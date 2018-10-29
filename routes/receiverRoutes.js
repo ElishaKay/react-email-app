@@ -47,7 +47,7 @@ module.exports = app => {
               phone,
               skills } = req.body;
 
-    const receiver = new Receiver({
+    const receiver = {
       firstName,
       lastName,
       entityUrn,
@@ -69,7 +69,7 @@ module.exports = app => {
       phone,
       skills: skills.split(',').map(skill => ({ skill: skill.trim() })),
       dateAccepted: Date.now()
-    });
+    };
 
     console.log('receiver: ',receiver);
 
@@ -77,7 +77,14 @@ module.exports = app => {
 
 
     try {
-      await receiver.save();
+      // await receiver.save();
+
+      var query = {'publicIdentifier':publicIdentifier};
+      
+      Receiver.findOneAndUpdate(query, receiver, {upsert:true}, function(err, doc){
+        if (err) return console.log({ error: err });
+        console.log("succesfully saved");
+      });
     } catch (err) {
       res.status(422).send(err);
     }
