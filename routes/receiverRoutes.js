@@ -26,16 +26,19 @@ module.exports = app => {
   app.post('/update_tag_to_connection', async (req, res) => {
     console.log('req.body in update_tag_to_connection route', req.body);
 
-
+    let numOfLoops=0;
 
     let updateReceiverTag = function(){
        Receiver.update(
           { publicIdentifier: req.body.connection_id }, 
           { $push: { licampaigns: req.body.tags, liusers: req.body.user_id} },
           function(err,numAffected) {
-            if(numAffected.nModified==0){
+            if(numAffected.nModified==0 && numOfLoops<10){
               console.log('numAffected===0 loop with: ', req.body.connection_id);
+              console.log('numOfLoops: ', numOfLoops);
+              numOfLoops++;
               setTimeout(function(){ updateReceiverTag(); }, 3000);
+
             }
             console.log('numAffected: ', numAffected);
              // something with the result in here
@@ -104,12 +107,8 @@ module.exports = app => {
     try {
       // await receiver.save();
 
-      var query = {'publicIdentifier':publicIdentifier};
-      
-      Receiver.findOneAndUpdate(query, receiver, {upsert:true}, function(err, doc){
-        if (err) return console.log({ error: err });
-        console.log("succesfully saved");
-      });
+      await receiver.save();
+
     } catch (err) {
       res.status(422).send(err);
     }
@@ -118,3 +117,5 @@ module.exports = app => {
    
   });
 };
+
+
