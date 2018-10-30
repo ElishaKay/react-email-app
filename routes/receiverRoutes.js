@@ -75,7 +75,7 @@ module.exports = app => {
               phone,
               skills } = req.body;
 
-    const receiver = {
+    const receiver = new Receiver({
       firstName,
       lastName,
       entityUrn,
@@ -97,7 +97,7 @@ module.exports = app => {
       phone,
       skills: skills.split(',').map(skill => ({ skill: skill.trim() })),
       dateAccepted: Date.now()
-    };
+    });
 
     console.log('receiver: ',receiver);
 
