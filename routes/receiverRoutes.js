@@ -23,6 +23,34 @@ module.exports = app => {
     res.send(receivers);
   });
 
+  app.post('/update_tag_to_connection', async (req, res) => {
+    console.log('req.body in update_tag_to_connection route', req.body);
+
+    let numOfLoops=0;
+
+    let updateReceiverTag = function(){
+       Receiver.update(
+          { publicIdentifier: req.body.connection_id }, 
+          { $push: { licampaigns: req.body.tags, liusers: req.body.user_id} },
+          function(err,numAffected) {
+            if(numAffected.nModified==0 && numOfLoops<10){
+              console.log('numAffected===0 loop with: ', req.body.connection_id);
+              console.log('numOfLoops: ', numOfLoops);
+              numOfLoops++;
+              setTimeout(function(){ updateReceiverTag(); }, 3000);
+
+            }
+            console.log('numAffected: ', numAffected);
+             // something with the result in here
+          }
+       );
+    }
+
+    updateReceiverTag();
+
+  });
+  
+
   app.post('/add_profile', async (req, res) => {
     console.log('req.body in receivers route', req.body);
 
@@ -47,7 +75,7 @@ module.exports = app => {
               phone,
               skills } = req.body;
 
-    const receiver = new Receiver({
+    const receiver = {
       firstName,
       lastName,
       entityUrn,
@@ -63,13 +91,13 @@ module.exports = app => {
       schoolName,
       fieldOfStudy,
       title,
-      companyName,
+      companyName,  
       languages,
       email,
       phone,
       skills: skills.split(',').map(skill => ({ skill: skill.trim() })),
       dateAccepted: Date.now()
-    });
+    };
 
     console.log('receiver: ',receiver);
 
@@ -77,7 +105,10 @@ module.exports = app => {
 
 
     try {
+      // await receiver.save();
+
       await receiver.save();
+
     } catch (err) {
       res.status(422).send(err);
     }
@@ -86,3 +117,5 @@ module.exports = app => {
    
   });
 };
+
+
