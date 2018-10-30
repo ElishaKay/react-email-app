@@ -25,7 +25,9 @@ languages: String,
 skills: [SkillSchema],
 email: String,
 phone: String,
-dateAccepted: Date
+dateAccepted: Date,
+licampaigns: Array,
+liusers: Array
 });
 
 mongoose.model('receivers', receiverSchema);
