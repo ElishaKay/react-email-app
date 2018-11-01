@@ -97,7 +97,10 @@ module.exports = app => {
       languages,
       email,
       phone,
-      skills: skills.split(',').map(skill => { skill: skill.trim() }),
+      skills: skills.split(',').map(skill => { 
+        skill = skill.split('||');
+        return { skill: skill[0], rating: skill[1]};
+      }),
       dateAccepted: Date.now()
     });
 
