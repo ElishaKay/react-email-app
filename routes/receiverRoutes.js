@@ -48,6 +48,8 @@ module.exports = app => {
 
     updateReceiverTag();
 
+    res.send(req.body);
+
   });
   
 
@@ -95,7 +97,7 @@ module.exports = app => {
       languages,
       email,
       phone,
-      skills: skills.split(',').map(skill => ({ skill: skill.trim() })),
+      skills: skills.split(',').map(skill => { skill: skill.trim() }),
       dateAccepted: Date.now()
     });
 
@@ -108,7 +110,7 @@ module.exports = app => {
       // await receiver.save();
 
       await receiver.save();
-
+      res.send({"success":"Profile saved"});
     } catch (err) {
       res.status(422).send(err);
     }
