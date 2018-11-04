@@ -10,8 +10,13 @@ mongoose.connect(keys.mongoURI);
 let receivers;
 
 let getReceivers = async () => {
-	receivers = await Receiver.find({ publicIdentifier: 'gordonwhyte' });
+	receivers = await Receiver.find({ publicIdentifier: 'talieh' });
 	console.log(receivers);
+	if(receivers.length==0){
+		console.log('nobody found')
+	} else {
+		console.log('receiver found')
+	}
 }
 
 getReceivers();
