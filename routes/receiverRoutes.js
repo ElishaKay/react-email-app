@@ -77,49 +77,72 @@ module.exports = app => {
               phone,
               skills } = req.body;
 
-    const receiver = new Receiver({
-      firstName,
-      lastName,
-      entityUrn,
-      objectUrn,
-      headline,
-      publicIdentifier,
-      industryCode,
-      picture,
-      trackingId,
-      locationName,
-      postalCode,
-      versionTag,
-      schoolName,
-      fieldOfStudy,
-      title,
-      companyName,  
-      languages,
-      email,
-      phone,
-      skills: skills.split(',').map(skill => { 
-        skill = skill.split('||');
-        return { skill: skill[0], rating: skill[1]};
-      }),
-      dateAccepted: Date.now()
-    });
+        //If it's the add-profile api call of followup process:
 
-    console.log('receiver: ',receiver);
+        if(email){
+          let updateReceiver = function(){
+            Receiver.update(
+                { publicIdentifier: publicIdentifier }, 
+                { $set: { email: email} },
+                function(err,numAffected) {
+                  if(numAffected.nModified==0 && numOfLoops<10){
+                    console.log('numAffected===0 loop with: ', req.body.connection_id);
+                    console.log('numOfLoops: ', numOfLoops);
+                    numOfLoops++;
+                    setTimeout(function(){ updateReceiver(); }, 3000);
 
-    // Great place to send an email!
+                  }
+                  console.log('numAffected: ', numAffected);
+                  res.send({"success":"Profile saved"});
+                   // something with the result in here
+                }
+             );
+          }
+          updateReceiver();
+        } else {
+            const receiver = new Receiver({
+              firstName,
+              lastName,
+              entityUrn,
+              objectUrn,
+              headline,
+              publicIdentifier,
+              industryCode,
+              picture,
+              trackingId,
+              locationName,
+              postalCode,
+              versionTag,
+              schoolName,
+              fieldOfStudy,
+              title,
+              companyName,  
+              languages,
+              email,
+              phone,
+              skills: skills.split(',').map(skill => { 
+                skill = skill.split('||');
+                return { skill: skill[0], rating: skill[1]};
+              }),
+              dateAccepted: Date.now()
+            });
+
+            console.log('receiver: ',receiver);
+
+            // Great place to send an email!
 
 
-    try {
-      // await receiver.save();
+            try {
+              // await receiver.save();
 
-      await receiver.save();
-      res.send({"success":"Profile saved"});
-    } catch (err) {
-      res.status(422).send(err);
-    }
+              await receiver.save();
+              res.send({"success":"Profile saved"});
+            } catch (err) {
+              res.status(422).send(err);
+            }
 
     // res.send(user);
-   
+   }
   });
 };
 
