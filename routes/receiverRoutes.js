@@ -56,97 +56,87 @@ module.exports = app => {
   app.post('/add_profile', async (req, res) => {
     console.log('req.body in receivers route', req.body);
 
+    let receiversQueryResult;
+
     const {  firstName,
-              lastName,
-              entityUrn,
-              objectUrn,
-              headline,
-              publicIdentifier,
-              industryCode,
-              picture,
-              trackingId,
-              locationName,
-              postalCode,
-              versionTag,
-              schoolName,
-              fieldOfStudy,
-              title,
-              companyName,
-              languages,
-              email,
-              phone,
-              skills } = req.body;
+                lastName,
+                entityUrn,
+                objectUrn,
+                headline,
+                publicIdentifier,
+                industryCode,
+                picture,
+                trackingId,
+                locationName,
+                postalCode,
+                versionTag,
+                schoolName,
+                fieldOfStudy,
+                title,
+                companyName,
+                languages,
+                email,
+                phone,
+                skills } = req.body;
 
-        //If it's the add-profile api call of followup process:
+    let getReceivers = async () => {
+      receiversQueryResult = await Receiver.find({ publicIdentifier: publicIdentifier });
+      console.log(receiversQueryResult);
+      if(receiversQueryResult.length==0){
+        console.log('nobody found, so we need to create a new record here.');
+        const receiver = new Receiver({
+                  firstName,
+                  lastName,
+                  entityUrn,
+                  objectUrn,
+                  headline,
+                  publicIdentifier,
+                  industryCode,
+                  picture,
+                  trackingId,
+                  locationName,
+                  postalCode,
+                  versionTag,
+                  schoolName,
+                  fieldOfStudy,
+                  title,
+                  companyName,  
+                  languages,
+                  email,
+                  phone,
+                  skills: skills? skills.split(',').map(skill => { 
+                    skill = skill.split('||');
+                    return { skill: skill[0], rating: skill[1]};
+                  }): '',
+                  dateAccepted: Date.now()
+                });
 
-        if(email != ''){
-          let numOfLoops=0;
-          let updateReceiver = function(){
-            Receiver.update(
-                { publicIdentifier: publicIdentifier }, 
-                { $set: { email: email} },
-                function(err,numAffected) {
-                  if (err){
-                    console.log('err within updateReceiver func: ',err);
-                  }
-                  if(numAffected.nModified==0 && numOfLoops<10){
-                    console.log('numAffected===0 loop with: ', req.body.connection_id);
-                    console.log('numOfLoops: ', numOfLoops);
-                    numOfLoops++;
-                    setTimeout(function(){ updateReceiver(); }, 3000);
+                try {
+                  // await receiver.save();
 
-                  }
-                  console.log('numAffected: ', numAffected);
-                  
-                   // something with the result in here
+                  await receiver.save();
+                  res.send({"success":"Profile saved"});
+                } catch (err) {
+                  res.status(422).send(err);
                 }
-             );
-          }
-          updateReceiver();
-        } else {
-            const receiver = new Receiver({
-              firstName,
-              lastName,
-              entityUrn,
-              objectUrn,
-              headline,
-              publicIdentifier,
-              industryCode,
-              picture,
-              trackingId,
-              locationName,
-              postalCode,
-              versionTag,
-              schoolName,
-              fieldOfStudy,
-              title,
-              companyName,  
-              languages,
-              email,
-              phone,
-              skills: skills? skills.split(',').map(skill => { 
-                skill = skill.split('||');
-                return { skill: skill[0], rating: skill[1]};
-              }): '',
-              dateAccepted: Date.now()
-            });
-
-            console.log('receiver: ',receiver);
-
-            // Great place to send an email!
-
-
-            try {
-              // await receiver.save();
-
-              await receiver.save();
-              res.send({"success":"Profile saved"});
-            } catch (err) {
-              res.status(422).send(err);
+      //end of logic for creating a new receiver record
+      } else {
+        console.log('receiver found, so only edit the email column');
+        Receiver.update(
+            { publicIdentifier: publicIdentifier }, 
+            { $set: { email: email} },
+            function(err,numAffected) {
+              if (err){
+                console.log('err within updateReceiver func: ',err);
+              } else{
+                res.send({"success":"Profile saved"});
+              }
             }
+         );
+      }
+    }
 
-    // res.send(user);
-   }
+    getReceivers();
   });
 };
 
