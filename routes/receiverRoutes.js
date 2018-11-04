@@ -79,12 +79,16 @@ module.exports = app => {
 
         //If it's the add-profile api call of followup process:
 
-        if(email){
+        if(email != ''){
+          let numOfLoops=0;
           let updateReceiver = function(){
             Receiver.update(
                 { publicIdentifier: publicIdentifier }, 
                 { $set: { email: email} },
                 function(err,numAffected) {
+                  if (err){
+                    console.log('err within updateReceiver func: ',err);
+                  }
                   if(numAffected.nModified==0 && numOfLoops<10){
                     console.log('numAffected===0 loop with: ', req.body.connection_id);
                     console.log('numOfLoops: ', numOfLoops);
@@ -93,7 +97,7 @@ module.exports = app => {
 
                   }
                   console.log('numAffected: ', numAffected);
-                  res.send({"success":"Profile saved"});
+                  
                    // something with the result in here
                 }
              );
@@ -120,10 +124,10 @@ module.exports = app => {
               languages,
               email,
               phone,
-              skills: skills.split(',').map(skill => { 
+              skills: skills? skills.split(',').map(skill => { 
                 skill = skill.split('||');
                 return { skill: skill[0], rating: skill[1]};
-              }),
+              }): '',
               dateAccepted: Date.now()
             });
 
