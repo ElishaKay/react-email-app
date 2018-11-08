@@ -11,6 +11,7 @@
     }
   },
   "dependencies": {
+    "alasql": "^0.4.11",
     "axios": "^0.16.2",
     "chart.js": "^2.7.3",
     "materialize-css": "^0.99.0",

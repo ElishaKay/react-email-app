@@ -1,4 +1,5 @@
 import axios from 'axios';
+import alasql from 'alasql';
 import equijoin from '../utils/equijoin';
 
 import { FETCH_USER, 
@@ -55,13 +56,16 @@ export const fetchLIConnections = () => async dispatch => {
       let LIConnections = values[0].data.conns.concat(values[1].data.conns);
       let LITaggedConnections =  values[2].data.concat(values[3].data);
       //debugger
-      console.log('LIConnections',LIConnections);
       console.log('LITaggedConnections',LITaggedConnections);
        console.log('LIConnections',LIConnections);
-       console.log('equijoin: ',equijoin)
 
-      let newConnectionList = equijoin(LIConnections, LITaggedConnections, "c_public_id", "connection_id",
-      ({c_name, c_profile_url, c_public_id, is_accepted, invitation_message, follow_up_message, date_conn_sent}, {tags, id}) => ({c_name, c_profile_url, c_public_id, is_accepted, invitation_message, follow_up_message, date_conn_sent, tags, id}));
+      // let newConnectionList = equijoin(LIConnections, LITaggedConnections, "c_public_id", "connection_id",
+      // ({c_name, c_profile_url, c_public_id, is_accepted, invitation_message, follow_up_message, date_conn_sent}, {tags, id}) => ({c_name, c_profile_url, c_public_id, is_accepted, invitation_message, follow_up_message, date_conn_sent, tags, id}));
+
+      let newConnectionList = alasql('SELECT * FROM ? LITaggedConnections JOIN ? LIConnections WHERE LITaggedConnections.connection_id = LIConnections.c_public_id', [LITaggedConnections,LIConnections]);
+
+
+      // arrA.name, arrB.location
 
       console.log('newConnectionList: ',newConnectionList)
 
