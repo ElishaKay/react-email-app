@@ -1,7 +1,61 @@
 
 Elisha's network requests:
 (So far, only includes the Followups Process)
+---------------------------
 
+Note: This can help us show a list of the responses of all leads 'that expressed-interest'!! :)
+It shows the 'notes' per user - which can be added via the LinkedIn Page.
+
+
+Request URL: http://45.55.120.26/get_tagged_connections_of_user/?user_id=5bc2231aca978bf632655324
+Request Method: GET
+
+[
+	{
+	"connection_id": "chiajessica",
+	"user_id": "5bc2231aca978bf632655324",
+	"tags": "Beauty/Editor - US&UK",
+	"id": "5bd588c5c22b3bbf0f1bf9e6"
+	},
+	{
+	"connection_id": "chichi-ogwe-527a578b",
+	"user_id": "5bc2231aca978bf632655324",
+	"tags": "Beauty/Editor - US&UK,expressed-interest",
+	"notes": "She's a beauty editor",
+	"id": "5bdae1dcad26090a5c6b94c6"
+	},
+	{
+	"connection_id": "chloe-burcham-4941b366",
+	"user_id": "5bc2231aca978bf632655324",
+	"tags": "Beauty/Editor - US&UK",
+	"id": "5bd98ce1bbcb62de2fe9fa25"
+	},
+]
+
+
+-------------------------
+
+
+Request URL: http://45.55.120.26/get_tagged_connections_of_user/?user_id=5bc2231aca978bf632655324&connection_id=chichi-ogwe-527a578b
+Request Method: GET
+
+Query String Parameters:
+user_id: 5bc2231aca978bf632655324
+connection_id: chichi-ogwe-527a578b
+
+Response:
+
+[
+  {
+    "connection_id": "chichi-ogwe-527a578b",
+    "user_id": "5bc2231aca978bf632655324",
+    "tags": "Beauty/Editor - US&UK,expressed-interest",
+    "notes": "She's a beauty editor",
+    "id": "5bdae1dcad26090a5c6b94c6"
+  }
+]
+
+----------------------------
 
 Request URL: http://45.55.120.26/is_patch_available?version=4.0.71
 Request Method: GET
