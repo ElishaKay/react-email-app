@@ -26,7 +26,7 @@ module.exports = app => {
    app.post('/api/profile-data', async (req, res) => {
 
     let profileData = req.body;
-    console.log('profileData: ', profileData);
+    // console.log('profileData: ', profileData);
 
     let {certificationView,
           courseView,
