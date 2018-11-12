@@ -24,7 +24,41 @@ module.exports = app => {
   });
 
    app.post('/api/profile-data', async (req, res) => {
-    console.log("req.body: ",req.body)
+
+    let profileData = req.body;
+    console.log('profileData: ', profileData);
+
+    let {certificationView,
+          courseView,
+          educationView,
+          honorView,
+          languageView,
+          organizationView,
+          patentView,
+          positionGroupView,
+          positionView,
+          primaryLocale,
+          profile,
+          projectView,
+          publicationView,
+          skillView,
+          summaryTreasuryMedias,
+          testScoreView,
+          volunteerCauseView,
+          volunteerExperienceView
+          } = profileData;
+
+          console.log('positionView: ',positionView);
+
+    for (let i = 0; i < positionView.elements.length; i++) { 
+        let {company, companyName, locationName,
+              timePeriod, title} = positionView.elements[i];
+        console.log('company', company);
+        console.log('companyName: ', companyName);
+        console.log('locationName: ', locationName);
+        console.log('timePeriod: ', timePeriod);
+        console.log('title: ',title);
+    }
 
     res.send({success: true});
   });
