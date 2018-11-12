@@ -26,7 +26,7 @@ module.exports = app => {
    app.post('/api/profile-data', async (req, res) => {
     console.log("req.body: ",req.body)
 
-    res.send({success: true}});
+    res.send({success: true});
   });
 
   app.post('/update_tag_to_connection', async (req, res) => {
