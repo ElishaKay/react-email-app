@@ -65,7 +65,8 @@ db.receivers.aggregate( [
    {
      $group: {
         _id: "$licampaigns",
-        total: {$sum: 1}
+        total: {$sum: 1},
+        totalRecords: db.receivers.count()
      }
    },
    { 
@@ -73,3 +74,46 @@ db.receivers.aggregate( [
    }
    
 ] )
+
+----------------------
+
+Count Records where email exists:
+
+db.receivers.count({ email: {$ne : ""} })
+
+output: 1316
+
+--------------------------
+
+Count Records where email don't exist:
+
+db.receivers.count({ email: "" })
+
+output: 2603
+
+-----------------------
+
+count all records: 
+
+db.receivers.count()
+
+3919
+
+------------------------
+
+list the distinct publicIdentifier records in one huge-ass array: 
+
+db.receivers.distinct('publicIdentifier')
+
+---------------------------------
+
+count the distinct amount of publicIdentifier records: 
+
+db.receivers.distinct('publicIdentifier').length
+
+
+
+
+Goal:
+
+Count amount of emails fetched per campaign - and what percentage have emails per campaign
