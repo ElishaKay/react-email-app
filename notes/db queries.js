@@ -123,3 +123,26 @@ Source: https://stackoverflow.com/questions/22819303/mongodb-aggregation-divide-
 Also When need to review $cond
 
 https://docs.mongodb.com/manual/reference/operator/aggregation/cond/
+
+
+--------------
+
+Some Progress: Succesfully using $project and $cond - need to see how to pipe this into a $group aggregator
+
+
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        _id: "$licampaigns",
+        total: {$sum: 1},
+        emailFound: {
+                 $cond: { if: { $ne: [ "$email", "" ] }, then: 1, else: 0 }
+               }
+     }
+   },
+   { 
+     $sort: { total: -1 }
+   }
+   
+] )
