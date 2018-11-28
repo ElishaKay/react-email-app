@@ -65,8 +65,7 @@ db.receivers.aggregate( [
    {
      $group: {
         _id: "$licampaigns",
-        total: {$sum: 1},
-        totalRecords: db.receivers.count()
+        total: {$sum: 1}
      }
    },
    { 
@@ -117,3 +116,10 @@ db.receivers.distinct('publicIdentifier').length
 Goal:
 
 Count amount of emails fetched per campaign - and what percentage have emails per campaign
+idea for implementaion: use the '$divide' and $project
+Source: https://stackoverflow.com/questions/22819303/mongodb-aggregation-divide-computed-fields
+
+
+Also When need to review $cond
+
+https://docs.mongodb.com/manual/reference/operator/aggregation/cond/
