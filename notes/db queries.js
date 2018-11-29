@@ -146,3 +146,89 @@ db.receivers.aggregate( [
    }
    
 ] )
+
+
+---------------------------------
+
+Select email, campaign, whether or not (0,1) an email is there.
+
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        _id: "$licampaigns",
+        total: {$sum: 1},
+        email: 1,
+        emailFound: {
+                 $cond: { if: { $ne: [ "$email", "" ] }, then: 1, else: 0 }
+               }
+     }
+   },
+   { 
+     $sort: { email: -1 }
+   }
+   
+] )
+
+Example Output:
+
+/* 1 */
+{
+    "email" : "zvika@tvtrio.com",
+    "_id" : [ 
+        "CE-VP-Marketing-US-UK"
+    ],
+    "total" : 1.0,
+    "emailFound" : 1.0
+}
+
+/* 2 */
+{
+    "email" : "zvickrant@yahoo.com",
+    "_id" : [ 
+        "CE-Ventures-US-UK"
+    ],
+    "total" : 1.0,
+    "emailFound" : 1.0
+}
+
+/* 3 */
+...
+
+Best Query Yet
+
+Select email, id (Sort by records that contain emails)
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        _id: "$licampaigns",
+        email: 1,
+     }
+   },
+   { 
+     $sort: { email: -1 }
+   }
+   
+] )
+
+
+ Output:
+
+ /* 1 */
+{
+    "email" : "zvika@tvtrio.com",
+    "_id" : [ 
+        "CE-VP-Marketing-US-UK"
+    ]
+}
+
+/* 2 */
+{
+    "email" : "zvickrant@yahoo.com",
+    "_id" : [ 
+        "CE-Ventures-US-UK"
+    ]
+}
+
+/* 3 */
