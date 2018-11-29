@@ -320,3 +320,26 @@ db.receivers.aggregate( [
    }
    
 ] )
+
+---------------------------------
+
+Show all columns - records with emails at the top
+
+db.receivers.aggregate( [
+   { 
+     $sort: { email: -1 }
+   }
+   
+] )
+
+---------------------------------------
+Show all columns - order by campaigns and emails simultaneously - 
+in other words: per campaign, show all records with the records with emails at the top.
+
+db.receivers.aggregate( [
+   
+   { 
+     $sort: { licampaigns: -1, email: -1,  }
+   }
+   
+] )
