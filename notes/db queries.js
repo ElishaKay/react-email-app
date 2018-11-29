@@ -343,3 +343,31 @@ db.receivers.aggregate( [
    }
    
 ] )
+
+--------------------------------------
+
+Another way to calculate records with emails vs. records without Emails:
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        _id: "$licampaigns",
+        email: 1,
+        emailFound: {
+                 $cond: { if: { $ne: [ "$email", "" ] }, then: 1, else: 0 }
+               },
+        totalRecords: {$sum: 1} 
+     }
+   },
+   {
+     $group: {
+        _id: "$_id",
+        recordsWithEmails: {$sum: "$emailFound"},
+        totalRecords: {$sum: "$totalRecords"}
+     }
+   },
+   { 
+     $sort: { recordsWithEmails: -1 }
+   }
+   
+] )
