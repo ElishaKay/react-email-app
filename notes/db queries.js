@@ -232,3 +232,64 @@ db.receivers.aggregate( [
 }
 
 /* 3 */
+
+
+-------------------------------
+
+Best Query Yet - Count the amout of emails per campaign:
+Next step is: a) list the emails per campaign (in a huge-ass array)
+b) Divide the total amoumnt of emails found/by total amount of records per campaign.
+
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        _id: "$licampaigns",
+        email: 1,
+        emailFound: {
+                 $cond: { if: { $ne: [ "$email", "" ] }, then: 1, else: 0 }
+               }
+     }
+   },
+   {
+     $group: {
+        _id: "$_id",
+        total: {$sum: "$emailFound"}
+     }
+   },
+   { 
+     $sort: { total: -1 }
+   }
+   
+] )
+
+
+Example Output:
+
+/* 1 */
+{
+    "_id" : [],
+    "total" : 626.0
+}
+
+/* 2 */
+{
+    "_id" : [ 
+        "CE-Ventures-US-UK"
+    ],
+    "total" : 222.0
+}
+
+/* 3 */
+{
+    "_id" : null,
+    "total" : 135.0
+}
+
+/* 4 */
+{
+    "_id" : [ 
+        "Beauty/Editor - US&UK"
+    ],
+    "total" : 96.0
+}
