@@ -438,3 +438,39 @@ db.receivers.aggregate( [
    }
    
 ] )
+
+--------------------------------------
+
+Showing all the skills within just one array (without the Skills Schema's ID...)
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        _id: 0,
+        entityUrn: 0,
+        objectUrn: 0,
+        picture: 0,
+        trackingId: 0,
+        versionTag: 0,
+        __v: 0
+     }
+   },
+   {
+        $addFields: {
+            linkedInUrl: { $concat: [ "https://www.linkedin.com/in/", "$publicIdentifier" ] },
+             skill1: {
+                  $arrayElemAt: [ "$skills.skill", 0 ]
+             },
+             skill2: {
+                  $arrayElemAt: [ "$skills.skill", 2 ]
+             },
+             allSkills: [{$arrayElemAt: [ "$skills.skill", 0 ]}, {$arrayElemAt: [ "$skills.skill", 1 ]},
+             {$arrayElemAt: [ "$skills.skill", 2 ]}, {$arrayElemAt: [ "$skills.skill", 3 ]}] 
+              
+        }
+    },
+   { 
+     $sort: { licampaigns: -1, email: -1,  }
+   }
+   
+] )
