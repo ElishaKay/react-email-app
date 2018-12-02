@@ -474,3 +474,33 @@ db.receivers.aggregate( [
    }
    
 ] )
+
+----------------------------
+
+Best OutPut Yet for the Excel Sheet :)
+
+db.receivers.aggregate( [
+   {
+        $addFields: {
+            linkedInUrl: { $concat: [ "https://www.linkedin.com/in/", "$publicIdentifier" ] },
+             allSkills: [{$arrayElemAt: [ "$skills.skill", 0 ]}, {$arrayElemAt: [ "$skills.skill", 1 ]},
+             {$arrayElemAt: [ "$skills.skill", 2 ]}, {$arrayElemAt: [ "$skills.skill", 3 ]}]
+        }
+    },
+    {
+     $project: {
+        _id: 0,
+        entityUrn: 0,
+        objectUrn: 0,
+        picture: 0,
+        trackingId: 0,
+        versionTag: 0,
+        __v: 0,
+        skills: 0,
+        publicIdentifier: 0
+     }
+   },
+   { 
+     $sort: { licampaigns: -1, email: -1,  }
+   }
+] )
