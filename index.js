@@ -7,6 +7,7 @@ const keys = require('./config/keys');
 require('./models/User');
 require('./models/Survey');
 require('./models/Receiver');
+require('./models/Position');
 require('./models/Company');
 require('./services/passport');
 
