@@ -40,6 +40,8 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);
 require('./routes/receiverRoutes')(app);
+require('./routes/gmailRoutes')(app);
+
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
