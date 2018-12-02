@@ -371,3 +371,70 @@ db.receivers.aggregate( [
    }
    
 ] )
+
+---------------------------------
+
+Sort by LICampaigns and Emails - and don't show the following columns:
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        _id: 0,
+        entityUrn: 0,
+        objectUrn: 0,
+        picture: 0,
+        trackingId: 0,
+        versionTag: 0,
+        __v: 0
+     }
+   },
+   { 
+     $sort: { licampaigns: -1, email: -1,  }
+   }
+   
+] )
+
+
+
+
+--------------------------
+
+Concat strings to create public linkedin URL
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        linkedInUrl: { $concat: [ "https://www.linkedin.com/in/", "$publicIdentifier" ] }
+     }
+   },
+   { 
+     $sort: { licampaigns: -1, email: -1,  }
+   }
+   
+] )
+
+------------------------------
+Includes the Concatenated linkedInUrl with no error
+
+db.receivers.aggregate( [
+   {
+     $project: {
+        _id: 0,
+        entityUrn: 0,
+        objectUrn: 0,
+        picture: 0,
+        trackingId: 0,
+        versionTag: 0,
+        __v: 0
+     }
+   },
+   {
+        $addFields: {
+            linkedInUrl: { $concat: [ "https://www.linkedin.com/in/", "$publicIdentifier" ] }
+        }
+    },
+   { 
+     $sort: { licampaigns: -1, email: -1,  }
+   }
+   
+] )
