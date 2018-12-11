@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const positionSchema = new Schema({
+  entityUrn: String,
   companyName: String,
   locationName: String,
   title: String,

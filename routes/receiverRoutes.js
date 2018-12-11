@@ -54,14 +54,16 @@ module.exports = app => {
 
     for (let i = 0; i < positionView.elements.length; i++) { 
         let {company, companyName, locationName,
-              timePeriod, title, description, companyUrn} = positionView.elements[i];
-        console.log('the company', company);
-        console.log('companyName: ', companyName);
-        console.log('locationName: ', locationName);
-        console.log('timePeriod: ', timePeriod);
-        console.log('title: ',title);
-
+              timePeriod, title, description, companyUrn, entityUrn} = positionView.elements[i];
+        // console.log('the company', company);
+        // console.log('companyName: ', companyName);
+        // console.log('locationName: ', locationName);
+        // console.log('timePeriod: ', timePeriod);
+        // console.log('title: ',title);
+        entityUrn = entityUrn.split(/[()]+/)[1];
         //save 1 position per loop
+        
+        //Option A - regular
           const position = new Position({
               companyName: companyName,
               locationName: locationName,
@@ -69,12 +71,45 @@ module.exports = app => {
               title: title,
               positionDescription: description,
               profileId: positionView.profileId,
-              companyUrn: companyUrn.match(/\d+/)[0]
+              companyUrn: companyUrn.match(/\d+/)[0],
+              entityUrn: entityUrn
           });
 
-      console.log('position: ',position)
+      // console.log('position: ',position)
 
-      position.save();
+      // position.save();
+
+      //Option B - Upsert True 
+      // const position = {
+      //         companyName: companyName,
+      //         locationName: locationName,
+      //         timePeriod: timePeriod,
+      //         title: title,
+      //         positionDescription: description,
+      //         profileId: positionView.profileId,
+      //         companyUrn: companyUrn.match(/\d+/)[0],
+      //         entityUrn: entityUrn
+      //     }
+
+      // Position.update({ entityUrn: entityUrn }, position, {upsert: true})
+
+      Position.findOne({ entityUrn: entityUrn }, function(err, result) {
+          if(!err) {
+            console.log('result: ',result)
+            if(!result){
+                position.save(function(err) {
+                    if(!err) {
+                        console.log("position Saved");
+                    }
+                    else {
+                        console.log("Error: could not save Position");
+                    }
+                });
+              //end of save it logic
+              }
+          }
+      });
+    //end of loop
     }
 
 
