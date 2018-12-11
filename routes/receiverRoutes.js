@@ -54,7 +54,7 @@ module.exports = app => {
 
     for (let i = 0; i < positionView.elements.length; i++) { 
         let {company, companyName, locationName,
-              timePeriod, title} = positionView.elements[i];
+              timePeriod, title, description} = positionView.elements[i];
         console.log('the company', company);
         console.log('companyName: ', companyName);
         console.log('locationName: ', locationName);
@@ -63,9 +63,14 @@ module.exports = app => {
 
         //save 1 position per loop
           const position = new Position({
-                    company,
-                    companyName
-                  });
+              name: companyName,
+              locationName: locationName,
+              timePeriod: timePeriod,
+              title: title,
+              positionDescription: description
+          });
+
+      console.log('position: ',position)
 
       position.save();
     }

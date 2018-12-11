@@ -4,14 +4,9 @@ const { Schema } = mongoose;
 const positionSchema = new Schema({
   name: String,
   locationName: String,
+  title: String,
   positionDescription: String,
-  timePeriod: Date,
-  region: String,
-  companyUrn: Number,
-  _receiver: { type: Schema.Types.ObjectId, ref: 'Receiver' },
-  _company: { type: Schema.Types.ObjectId, ref: 'Company' }
+  timePeriod: Object
 });
 
 mongoose.model('positions', positionSchema);
-
-module.exports = positionSchema;
