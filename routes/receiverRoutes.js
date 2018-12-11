@@ -6,8 +6,8 @@ const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 
 const Receiver = mongoose.model('receivers');
-const Position = mongoose.model('position');
-const Company = mongoose.model('company');
+const Position = mongoose.model('positions');
+const Company = mongoose.model('companies');
 
 module.exports = app => {
 
@@ -55,7 +55,7 @@ module.exports = app => {
     for (let i = 0; i < positionView.elements.length; i++) { 
         let {company, companyName, locationName,
               timePeriod, title} = positionView.elements[i];
-        console.log('company', company);
+        console.log('the company', company);
         console.log('companyName: ', companyName);
         console.log('locationName: ', locationName);
         console.log('timePeriod: ', timePeriod);
@@ -63,30 +63,8 @@ module.exports = app => {
 
         //save 1 position per loop
           const position = new Position({
-                    firstName,
-                    lastName,
-                    entityUrn,
-                    objectUrn,
-                    headline,
-                    publicIdentifier,
-                    industryCode,
-                    picture,
-                    trackingId,
-                    locationName,
-                    postalCode,
-                    versionTag,
-                    schoolName,
-                    fieldOfStudy,
-                    title,
-                    companyName,  
-                    languages,
-                    email,
-                    phone,
-                    skills: skills? skills.split(',').map(skill => { 
-                      skill = skill.split('||');
-                      return { skill: skill[0], rating: skill[1]};
-                    }): '',
-                    dateAccepted: Date.now()
+                    company,
+                    companyName
                   });
 
       position.save();

@@ -12,4 +12,6 @@ const positionSchema = new Schema({
   _company: { type: Schema.Types.ObjectId, ref: 'Company' }
 });
 
+mongoose.model('positions', positionSchema);
+
 module.exports = positionSchema;
