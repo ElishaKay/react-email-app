@@ -7,6 +7,7 @@ const requireCredits = require('../middlewares/requireCredits');
 
 const Receiver = mongoose.model('receivers');
 const Position = mongoose.model('position');
+const Company = mongoose.model('company');
 
 module.exports = app => {
 
