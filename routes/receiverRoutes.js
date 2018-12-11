@@ -6,6 +6,7 @@ const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 
 const Receiver = mongoose.model('receivers');
+const Position = mongoose.model('position');
 
 module.exports = app => {
 
@@ -58,7 +59,39 @@ module.exports = app => {
         console.log('locationName: ', locationName);
         console.log('timePeriod: ', timePeriod);
         console.log('title: ',title);
+
+        //save 1 position per loop
+          const position = new Position({
+                    firstName,
+                    lastName,
+                    entityUrn,
+                    objectUrn,
+                    headline,
+                    publicIdentifier,
+                    industryCode,
+                    picture,
+                    trackingId,
+                    locationName,
+                    postalCode,
+                    versionTag,
+                    schoolName,
+                    fieldOfStudy,
+                    title,
+                    companyName,  
+                    languages,
+                    email,
+                    phone,
+                    skills: skills? skills.split(',').map(skill => { 
+                      skill = skill.split('||');
+                      return { skill: skill[0], rating: skill[1]};
+                    }): '',
+                    dateAccepted: Date.now()
+                  });
+
+      position.save();
     }
+
+
 
     res.send({success: true});
   });

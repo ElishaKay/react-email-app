@@ -7,7 +7,9 @@ const positionSchema = new Schema({
   positionDescription: String,
   timePeriod: Date,
   region: String,
-  companyUrn: Number
+  companyUrn: Number,
+  _receiver: { type: Schema.Types.ObjectId, ref: 'Receiver' },
+  _company: { type: Schema.Types.ObjectId, ref: 'Company' }
 });
 
 module.exports = positionSchema;

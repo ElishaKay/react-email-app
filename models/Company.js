@@ -8,7 +8,8 @@ const companySchema = new Schema({
 	employeeCountRange: String,
 	companyDescription: String,
 	industries: Array,
-	liCompanyId: Number
+	liCompanyId: Number,
+	companyUrl: String
 });
 
 mongoose.model('companies', companySchema);
