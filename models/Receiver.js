@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const SkillSchema = require('./Skill');
+const PositionSchema = require('./Position');
 
 const receiverSchema = new Schema({
 	firstName: String,
@@ -27,7 +28,8 @@ const receiverSchema = new Schema({
 	phone: String,
 	dateAccepted: Date,
 	licampaigns: Array,
-	liusers: Array
+	liusers: Array,
+	positions: [PositionSchema]
 });
 
 mongoose.model('receivers', receiverSchema);
