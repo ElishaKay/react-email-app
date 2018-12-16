@@ -9,7 +9,8 @@ const positionSchema = new Schema({
   positionDescription: String,
   timePeriod: Object,
   profileId: String,
-  companyUrn: Number
+  companyUrn: Number,
+  dateSaved: Date
 });
 
 mongoose.model('positions', positionSchema);

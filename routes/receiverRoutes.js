@@ -72,26 +72,10 @@ module.exports = app => {
               positionDescription: description,
               profileId: positionView.profileId,
               companyUrn: companyUrn.match(/\d+/)[0],
-              entityUrn: entityUrn
+              entityUrn: entityUrn,
+              dateSaved: Date.now()
           });
 
-      // console.log('position: ',position)
-
-      // position.save();
-
-      //Option B - Upsert True 
-      // const position = {
-      //         companyName: companyName,
-      //         locationName: locationName,
-      //         timePeriod: timePeriod,
-      //         title: title,
-      //         positionDescription: description,
-      //         profileId: positionView.profileId,
-      //         companyUrn: companyUrn.match(/\d+/)[0],
-      //         entityUrn: entityUrn
-      //     }
-
-      // Position.update({ entityUrn: entityUrn }, position, {upsert: true})
 
       Position.findOne({ entityUrn: entityUrn }, function(err, result) {
           if(!err) {
