@@ -38,7 +38,7 @@ passport.use(
       let {displayName, name, emails, photos, gender } = profile;
       let {familyName, givenName} = name;
       let email = emails[0]['value'];
-      let photo = photos[0]['value'].split('?')[0];
+      let photo = photos[0] ? photos[0]['value'].split('?')[0] : '';
       const user = await new User({ googleId: profile.id,
                                     displayName,
                                     familyName,
