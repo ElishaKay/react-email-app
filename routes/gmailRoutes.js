@@ -41,10 +41,10 @@ module.exports = app => {
   }
 
   app.get('/api/checkGmailLabels', requireLogin, async (req, res) => {
-    authorize(req.user.accessToken, listLabels);
-
+    
     // Authorize a client with the loaded credentials, then call the
     // Gmail API.
+    authorize(req.user.accessToken, listLabels);
      
     /**
      * Lists the labels in the user's account.
@@ -74,39 +74,10 @@ module.exports = app => {
 
 
     res.send({success: true});
-  });  
-    
+  }); 
 
-  app.post('/api/sendEmail', requireLogin, async (req, res) => {
-    
-
-
-    /**
-     * Lists the labels in the user's account.
-     *
-     * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
-     */
-     
-    function listLabels(auth) {
-      gmail.users.labels.list({auth: auth, userId: 'me',}, function(err, response) {
-        if (err) {
-          console.log('The API returned an error: ' + err);
-          return;
-        }
-     
-        var labels = response.data.labels;
-     
-        if (labels.length == 0) {
-          console.log('No labels found.');
-        } else {
-          console.log('Labels:');
-          for (var i = 0; i < labels.length; i++) {
-            var label = labels[i];
-            console.log('%s', label.name);
-          }
-        }
-      });
-    }
+  app.get('/api/getRecentEmail', requireLogin, async (req, res) => {
+    authorize(req.user.accessToken, getRecentEmail);
 
     /**
      * Get the recent email from your Gmail account
@@ -146,6 +117,13 @@ module.exports = app => {
           });
         });
     }
+
+    res.send({success: true});
+  }); 
+    
+
+  app.get('/api/sendEmail', requireLogin, async (req, res) => {
+    authorize(req.user.accessToken, sendMessage);
 
 
     function makeBody(to, from, subject, message) {
