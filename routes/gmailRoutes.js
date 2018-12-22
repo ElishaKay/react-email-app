@@ -15,37 +15,36 @@ var gmail = google.gmail('v1');
 
 module.exports = app => {
   
-  app.get('/api/checkGmailLabels', requireLogin, async (req, res) => {
-    authorize(listLabels);
-
-    // Authorize a client with the loaded credentials, then call the
-    // Gmail API.
-
-     
-    /**
+     /**
      * Create an OAuth2 client with the given credentials, and then execute the
      * given callback function.
      *
      * @param {Object} credentials The authorization client credentials.
      * @param {function} callback The callback to call with the authorized client.
      */
-    function authorize(callback) {
-        var clientSecret = process.env.CLIENT_SECRET;
-        var clientId = process.env.CLIENT_ID;
-        var redirectUrl = process.env.REDIRECT_DOMAIN;
-     
-        var OAuth2 = google.auth.OAuth2;
-     
-        var oauth2Client = new OAuth2(clientId, clientSecret,  redirectUrl);
-        console.log('oauth2Client: ',oauth2Client)
-     
-        let token = {access_token: req.user.accessToken,
-                      scope: "https://www.googleapis.com/auth/gmail.readonly",
-                      token_type: "Bearer"};
+  function authorize(accessToken, callback) {
+      var clientSecret = process.env.CLIENT_SECRET;
+      var clientId = process.env.CLIENT_ID;
+      var redirectUrl = process.env.REDIRECT_DOMAIN;
+   
+      var OAuth2 = google.auth.OAuth2;
+   
+      var oauth2Client = new OAuth2(clientId, clientSecret,  redirectUrl);
+      console.log('oauth2Client: ',oauth2Client)
+   
+      let token = {access_token: accessToken,
+                    scope: "https://www.googleapis.com/auth/gmail.readonly",
+                    token_type: "Bearer"};
 
-          oauth2Client.credentials = token;
-          callback(oauth2Client);
-    }
+        oauth2Client.credentials = token;
+        callback(oauth2Client);
+  }
+
+  app.get('/api/checkGmailLabels', requireLogin, async (req, res) => {
+    authorize(req.user.accessToken, listLabels);
+
+    // Authorize a client with the loaded credentials, then call the
+    // Gmail API.
      
     /**
      * Lists the labels in the user's account.
