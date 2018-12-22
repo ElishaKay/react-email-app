@@ -141,7 +141,7 @@ module.exports = app => {
     }
 
     function sendMessage(auth) {
-        var raw = makeBody('alephmarketingpros@gmail.com', 'alephmarketingpros@gmail.com', 'test subject', 'test message');
+        var raw = makeBody('alephmarketingpros@gmail.com', 'alephmarketingpros@gmail.com', 'test subject', '<h1>h1 test message</h1>');
         gmail.users.messages.send({
             auth: auth,
             userId: 'me',
@@ -152,10 +152,6 @@ module.exports = app => {
             res.send(err || response)
         });
     }
-
-
-
-    const user = await req.user.save();
 
     res.send(user);
   });

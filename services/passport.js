@@ -31,6 +31,17 @@ passport.use(
       const existingUser = await User.findOne({ googleId: profile.id });
 
       if (existingUser) {
+        // req.user.accessToken = accessToken;
+        User.update(
+          { googleId: profile.id }, 
+          { $set: { accessToken: accessToken} },
+          function(err,numAffected) {
+            console.log('numAffected: ', numAffected);
+             // something with the result in here
+          });
+
+        existingUser.accessToken = accessToken;
+
         return done(null, existingUser);
       }
 
