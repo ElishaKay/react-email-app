@@ -4,6 +4,7 @@ const requireLogin = require('../middlewares/requireLogin');
 var fs = require('fs');
 var readline = require('readline');
 var {google} = require('googleapis');
+const crowdFundTemplate3 = require('../services/emailTemplates/crowdFundTemplate3');
  
 // If modifying these scopes, delete your previously saved credentials
 // at TOKEN_DIR/gmail-nodejs.json
@@ -140,8 +141,12 @@ module.exports = app => {
             return encodedMail;
     }
 
+    
+
     function sendMessage(auth) {
-        var raw = makeBody('alephmarketingpros@gmail.com', 'alephmarketingpros@gmail.com', 'test subject', '<h1>h1 test message</h1>');
+        let message = crowdFundTemplate3();
+        
+        var raw = makeBody('alephmarketingpros@gmail.com', 'alephmarketingpros@gmail.com', 'test subject', message);
         gmail.users.messages.send({
             auth: auth,
             userId: 'me',
