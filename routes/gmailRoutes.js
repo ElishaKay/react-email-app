@@ -136,7 +136,7 @@ module.exports = app => {
             message
         ].join('');
 
-        var encodedMail = new Buffer(str).toString("base64").replace(/\+/g, '-').replace(/\//g, '_');
+        var encodedMail = Buffer.from(str).toString("base64").replace(/\+/g, '-').replace(/\//g, '_');
             return encodedMail;
     }
 
@@ -153,6 +153,6 @@ module.exports = app => {
         });
     }
 
-    res.send(user);
+    res.send({success: true});
   });
 };
