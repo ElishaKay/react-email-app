@@ -15,7 +15,9 @@ export class Header2 extends React.Component {
   }
 
   handleClose() {
+    setTimeout(function(){ 
      this.setState({ isOpen: false })
+    }.bind(this), 3000);
   }
 
   render() {
