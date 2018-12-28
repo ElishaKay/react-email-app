@@ -16,6 +16,7 @@
     "chart.js": "^2.7.3",
     "materialize-css": "^0.99.0",
     "react": "^16.0.0-alpha.13",
+    "react-bootstrap": "^0.32.4",
     "react-chartjs-2": "^2.7.4",
     "react-csv": "^1.0.18",
     "react-dom": "^16.0.0-alpha.13",
