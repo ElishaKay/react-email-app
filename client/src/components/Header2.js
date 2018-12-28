@@ -41,12 +41,12 @@ export class Header2 extends React.Component {
                 onMouseEnter = { this.handleOpen }
                 onMouseLeave = { this.handleClose }
                 open={ this.state.isOpen }
-                eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Action</MenuItem>
-                <MenuItem eventKey={3.2}>Another action</MenuItem>
-                <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                eventKey={3} title="Email" id="basic-nav-dropdown">
+                <MenuItem eventKey={3.1}>Send Email</MenuItem>
+                <MenuItem eventKey={3.2}>Create Template</MenuItem>
+                <MenuItem eventKey={3.3}>View Labels</MenuItem>
                 <MenuItem divider />
-                <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                <MenuItem eventKey={3.3}>Get Recent Email</MenuItem>
               </NavDropdown>
             </Nav>
             <Nav pullRight>
