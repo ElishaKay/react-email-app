@@ -98,6 +98,8 @@ module.exports = app => {
           // Get the message id which we will need to retreive tha actual message next.
           var message_id = response['data']['messages'][0]['id'];
 
+          console.log('message_id: ',message_id)
+
           // Retreive the actual message using the message id
           gmail.users.messages.get({auth: auth, userId: 'me', 'id': message_id}, function(err, response) {
               if (err) {
@@ -105,11 +107,15 @@ module.exports = app => {
                   return;
               }
 
+              console.log('response of users.messages.get: ',response)
+
               // Access the email body content, like this...
               message_raw = response['data']['payload']['parts'][0].body.data;
-               
+              console.log('message_raw: ',message_raw)
+
+
               // or like this
-              message_raw = response.data.payload.parts[0].body.data;
+              // message_raw = response.data.payload.parts[0].body.data;
 
               data = message_raw;
               console.log('data: ',data)  
