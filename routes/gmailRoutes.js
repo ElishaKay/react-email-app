@@ -87,11 +87,13 @@ module.exports = app => {
      */
     function getRecentEmail(auth) {
         // Only get the recent email - 'maxResults' parameter
-        gmail.users.messages.list({auth: auth, userId: 'me', maxResults: 1,}, function(err, response) {
+        gmail.users.messages.list({auth: auth, userId: 'me', maxResults: 10,}, function(err, response) {
             if (err) {
                 console.log('The API returned an error: ' + err);
                 return;
             }
+
+            console.log('response: ',response)
      
           // Get the message id which we will need to retreive tha actual message next.
           var message_id = response['data']['messages'][0]['id'];
@@ -109,9 +111,11 @@ module.exports = app => {
               // or like this
               message_raw = response.data.payload.parts[0].body.data;
 
-              data = message_raw;  
-              buff = new Buffer(data, 'base64');  
+              data = message_raw;
+              console.log('data: ',data)  
+              buff = Buffer.from(data, 'base64');  
               text = buff.toString();
+              debugger;
               console.log(text);
      
              console.log(response['data']);
