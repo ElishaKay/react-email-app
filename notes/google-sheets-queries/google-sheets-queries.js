@@ -6,7 +6,7 @@ Listing all records where column F contains any of the following substrings:
 
 Using the Filter Function:
 
-=filter(Large_Named_Range,Given_Column_Range="Beauty Writer")
+=filter(Large_Named_Range,Given_Column="Beauty Writer")
 
 
 ----------------------------------------
@@ -16,4 +16,9 @@ Concat String (if 02 has the end of the string)
 =concat("https://www.linkedin.com/in/",O2)
 
 
+-----------------------------------
 
+
+Remove Duplicates: (group by function for single column)
+
+=unique(companyNames)
