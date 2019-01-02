@@ -511,3 +511,10 @@ db.receivers.aggregate( [
 Find the uncategorized leads according to those with the word 'Editor' in the title:
 
 db.receivers.find({"headline" : {$regex : ".*editor.*"}})
+
+-------------------------------------------
+
+All records that contain either the substring 'journalist' or substring 'reporter'
+
+db.receivers.find({"headline" : {$in: [ /.*journalist.*/, /.*reporter./ ]}})
+
