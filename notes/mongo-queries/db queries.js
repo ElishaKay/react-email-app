@@ -518,3 +518,9 @@ All records that contain either the substring 'journalist' or substring 'reporte
 
 db.receivers.find({"headline" : {$in: [ /.*journalist.*/, /.*reporter./ ]}})
 
+--------------------------------------
+
+All records that contain either the substring 'journalist' or substring 'reporter' or 'editor' (118)
+
+db.receivers.count({"headline" : {$in: [ /.*journalist.*/, /.*reporter./, /.*editor./ ]}})
+
