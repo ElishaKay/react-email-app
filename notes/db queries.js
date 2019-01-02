@@ -504,3 +504,10 @@ db.receivers.aggregate( [
      $sort: { licampaigns: -1, email: -1,  }
    }
 ] )
+
+----------------------------------------------
+
+
+Find the uncategorized leads according to those with the word 'Editor' in the title:
+
+db.receivers.find({"headline" : {$regex : ".*editor.*"}})
