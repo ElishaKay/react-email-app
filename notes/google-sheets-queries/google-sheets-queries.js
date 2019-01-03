@@ -47,5 +47,10 @@ Step 3: Create a new Sheet, and paste this into column A1:
 
 example: https://docs.google.com/spreadsheets/d/1VHJ0NFxQ7YGR80WZwaadYWeMmNiVJYVrcttCHh2ZpsE/edit?usp=sharing
 
+
+Source with examples of Query Function:
+
+https://www.benlcollins.com/spreadsheets/google-sheets-query-sql/
+
 ---------------------------
 
