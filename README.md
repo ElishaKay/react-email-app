@@ -1,3 +1,5 @@
+React, Redux, NodeJS and Friends.
+
 1) Npm Install dependencies in server and client
 
 2) Set environment variables
