@@ -16,7 +16,7 @@ Need to be logged in to Heroku CLI
 heroku git:remote -a project
 ```
 
-How to send custom HTML:
+How to send custom HTML with Gmail API:
 
 "@ArjunKava just set Content-Type: text/html; instead of Content-Type: text/plain;"
 
